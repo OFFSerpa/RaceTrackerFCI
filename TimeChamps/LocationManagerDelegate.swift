@@ -5,14 +5,13 @@
 //  Created by Vinicius Serpa on 21/05/24.
 //
 
-import Foundation
+import CoreLocation
 import MapKit
 
 class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
-    
     weak var mapView: MKMapView?
     weak var viewController: AddViewController?
-    
+
     var currentRouteCoordinates: [CLLocationCoordinate2D] = []
     var isSaving: Bool = false
 
@@ -20,16 +19,16 @@ class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
         self.mapView = mapView
         self.viewController = viewController
     }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocaitons locations: [CLLocation]) {
-        guard let location = locations.last else {return}
-        guard let mapView = mapView else {return}
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        guard let mapView = mapView else { return }
         
-        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 300, longitudinalMeters: 300)
+        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
         mapView.setRegion(region, animated: true)
-        
+
         viewController?.updateSpeedLabel(speed: location.speed)
-        
+
         if isSaving {
             currentRouteCoordinates.append(location.coordinate)
             viewController?.routeCoordinates.append(location.coordinate)
@@ -37,13 +36,12 @@ class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
             if let polyline = viewController?.currentPolyline {
                 mapView.removeOverlay(polyline)
             }
-            
+
             viewController?.currentPolyline = createPolyline()
             mapView.addOverlay(viewController!.currentPolyline!)
         }
-
     }
-    
+
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         viewController?.checkLocationAuthorization()
     }
@@ -51,7 +49,7 @@ class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to get location: \(error)")
     }
-    
+
     func startNewRoute() {
         if isSaving {
             currentRouteCoordinates = []
@@ -64,10 +62,8 @@ class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
             isSaving = false
         }
     }
-    
-    
+
     private func createPolyline() -> MKPolyline {
         return MKPolyline(coordinates: currentRouteCoordinates, count: currentRouteCoordinates.count)
     }
-    
 }

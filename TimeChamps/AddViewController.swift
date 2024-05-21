@@ -57,22 +57,27 @@ class AddViewController: UIViewController, MKMapViewDelegate{
         setupUI()
     }
     
+    
+    //Configurar Elementos da Tela
     private func setupUI() {
-        setMap()
-        setStartButton()
+        setConstraints()
         
         self.view.backgroundColor = UIColor.secondarySystemBackground
         self.navigationItem.title = "Novo Percuso"
     }
     
+    
+    //Configurar o delegate e o locationManager
     private func configureLocationManager() {
         locationManager = CLLocationManager()
+        locationManagerDelegate = LocationManagerDelegate(mapView: mapView, viewController: self)
+        locationManager?.delegate = locationManagerDelegate
         
         locationManager?.startUpdatingLocation()
-        locationManager?.delegate = self
         locationManager?.requestAlwaysAuthorization()
         locationManager?.requestWhenInUseAuthorization()
-        locationManager?.requestLocation()
+        
+        mapView.userTrackingMode = .followWithHeading
         mapView.delegate = self
     }
     
@@ -86,8 +91,12 @@ class AddViewController: UIViewController, MKMapViewDelegate{
     
     //Configuração do Mapa
     
-    func setMap() {
+    //Constraints
+    func setConstraints() {
+        
         view.addSubview(mapView)
+        view.addSubview(speedLabel)
+        view.addSubview(startButton)
         
         
         NSLayoutConstraint.activate([
@@ -95,15 +104,12 @@ class AddViewController: UIViewController, MKMapViewDelegate{
             mapView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 5),
             mapView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -120),
             mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+            mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             
-        ])
-    }
-    
-    func setStartButton() {
-        view.addSubview(startButton)
-        
-        NSLayoutConstraint.activate([
+            
+            speedLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            speedLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
             
             startButton.topAnchor.constraint(equalTo: self.mapView.bottomAnchor, constant: 40),
             startButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -4),
@@ -112,7 +118,7 @@ class AddViewController: UIViewController, MKMapViewDelegate{
             
         ])
     }
-
+    
     
     public func checkAuthorization() {
         guard let locationManager = locationManager,
@@ -160,7 +166,7 @@ extension AddViewController: CLLocationManagerDelegate {
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-      checkAuthorization()
+        checkAuthorization()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
