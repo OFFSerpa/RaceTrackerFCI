@@ -11,13 +11,15 @@ import MapKit
 class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
     weak var mapView: MKMapView?
     weak var viewController: AddViewController?
+    weak var speedLabel: SpeedLabelView?
 
     var currentRouteCoordinates: [CLLocationCoordinate2D] = []
     var isSaving: Bool = false
 
-    init(mapView: MKMapView, viewController: AddViewController) {
+    init(mapView: MKMapView, viewController: AddViewController, speedLabel: SpeedLabelView) { 
         self.mapView = mapView
         self.viewController = viewController
+        self.speedLabel = speedLabel
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -27,7 +29,7 @@ class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
         let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
         mapView.setRegion(region, animated: true)
 
-        viewController?.updateSpeedLabel(speed: location.speed)
+        speedLabel?.updateSpeed(speed: location.speed)
 
         if isSaving {
             currentRouteCoordinates.append(location.coordinate)
