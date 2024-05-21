@@ -13,6 +13,7 @@
 		D013DBD32BF54936007C04F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D013DBD22BF54936007C04F6 /* Assets.xcassets */; };
 		D013DBDE2BF557AF007C04F6 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013DBDD2BF557AF007C04F6 /* AddViewController.swift */; };
 		D013DBE02BF683F9007C04F6 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013DBDF2BF683F9007C04F6 /* CardView.swift */; };
+		D079A8DD2BFD0CD2008436D5 /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8DC2BFD0CD2008436D5 /* LocationManagerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		D013DBD72BF54936007C04F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D013DBDD2BF557AF007C04F6 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		D013DBDF2BF683F9007C04F6 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		D079A8DC2BFD0CD2008436D5 /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				D013DBC92BF54935007C04F6 /* AppDelegate.swift */,
 				D013DBCB2BF54935007C04F6 /* SceneDelegate.swift */,
 				D013DBCD2BF54935007C04F6 /* ViewController.swift */,
+				D079A8DC2BFD0CD2008436D5 /* LocationManagerDelegate.swift */,
 				D013DBDD2BF557AF007C04F6 /* AddViewController.swift */,
 				D013DBD22BF54936007C04F6 /* Assets.xcassets */,
 				D013DBD72BF54936007C04F6 /* Info.plist */,
@@ -141,6 +144,7 @@
 				D013DBDE2BF557AF007C04F6 /* AddViewController.swift in Sources */,
 				D013DBCC2BF54935007C04F6 /* SceneDelegate.swift in Sources */,
 				D013DBE02BF683F9007C04F6 /* CardView.swift in Sources */,
+				D079A8DD2BFD0CD2008436D5 /* LocationManagerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,22 +11,41 @@ import MapKit
 class AddViewController: UIViewController, MKMapViewDelegate{
     
     var locationManager: CLLocationManager?
+    var locationManagerDelegate: LocationManagerDelegate?
+    
+    var polylines: [MKPolyline] = []
+    
+    var routeCoordinates: [CLLocationCoordinate2D] = []
+    var currentPolyline: MKPolyline?
+    
+    var isSaving: Bool = false {
+        didSet {
+            locationManagerDelegate?.isSaving = isSaving
+        }
+    }
+    
     
     let startButton: UIButton = {
         let button = UIButton()
-     
         button.setTitle("Gravar Rota", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.backgroundColor = UIColor.green
         button.layer.cornerRadius = 40
         button.translatesAutoresizingMaskIntoConstraints = false
-        
         return button
     }()
     
+    let speedLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .orange
+        label.font = .systemFont(ofSize: 32, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
     let mapView: MKMapView = {
         let map = MKMapView()
+        map.overrideUserInterfaceStyle = .dark
         map.showsUserLocation = true
         map.translatesAutoresizingMaskIntoConstraints = false
         return map
@@ -34,14 +53,20 @@ class AddViewController: UIViewController, MKMapViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureLocationManager()
+        setupUI()
+    }
+    
+    private func setupUI() {
+        setMap()
+        setStartButton()
         
-        locationManager = CLLocationManager()
-
-        
-        setElements()
         self.view.backgroundColor = UIColor.secondarySystemBackground
         self.navigationItem.title = "Novo Percuso"
-        
+    }
+    
+    private func configureLocationManager() {
+        locationManager = CLLocationManager()
         
         locationManager?.startUpdatingLocation()
         locationManager?.delegate = self
@@ -49,14 +74,14 @@ class AddViewController: UIViewController, MKMapViewDelegate{
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.requestLocation()
         mapView.delegate = self
-        
-        
-        
     }
     
-    func setElements() {
-        setMap()
-        setStartButton()
+    
+    //Func para atualizar o velocimento da tela
+    
+    public func updateSpeedLabel(speed: CLLocationSpeed) {
+        let speedInKmH = speed * 3.6
+        speedLabel.text = String(format: "Velocidade: %.2f km/h", speedInKmH)
     }
     
     //Configuração do Mapa
@@ -103,6 +128,23 @@ class AddViewController: UIViewController, MKMapViewDelegate{
             print("")
         @unknown default:
             print("")
+        }
+    }
+    
+    
+    func checkLocationAuthorization() {
+        guard let locationManager = locationManager else { return }
+        switch locationManager.authorizationStatus {
+        case .authorizedWhenInUse, .authorizedAlways:
+            mapView.showsUserLocation = true
+            locationManager.startUpdatingLocation()
+        case .denied:
+            // Show alert letting the user know what’s up
+            break
+        case .notDetermined, .restricted:
+            locationManager.requestWhenInUseAuthorization()
+        @unknown default:
+            break
         }
     }
     
