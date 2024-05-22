@@ -14,11 +14,11 @@ class AddViewController: UIViewController, MKMapViewDelegate {
     var locationManagerDelegate: LocationManagerDelegate?
     
     var polylines: [MKPolyline] = []
-    
     var routeCoordinates: [CLLocationCoordinate2D] = []
     var currentPolyline: MKPolyline?
     
     let speedLabel = SpeedLabelView()
+    let routes = Routes() // Adiciona a instância de Routes para gerenciar as rotas
     
     var isSaving: Bool = false {
         didSet {
@@ -29,6 +29,7 @@ class AddViewController: UIViewController, MKMapViewDelegate {
     
     let startButton: UIButton = {
         let button = UIButton()
+        button.setTitle("Gravar Rota", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.backgroundColor = UIColor.green
         button.layer.cornerRadius = 40
@@ -51,7 +52,6 @@ class AddViewController: UIViewController, MKMapViewDelegate {
         setupUI()
     }
     
-    // Configurar Elementos da Tela
     private func setupUI() {
         view.addSubview(mapView)
         view.addSubview(speedLabel)
@@ -60,12 +60,11 @@ class AddViewController: UIViewController, MKMapViewDelegate {
         setConstraints()
         
         self.view.backgroundColor = UIColor.secondarySystemBackground
-        self.navigationItem.title = "Novo Percuso"
+        self.navigationItem.title = "Novo Percurso"
         
         updateButtonTitle()
     }
     
-    // Configurar o delegate e o locationManager
     private func configureLocationManager() {
         locationManager = CLLocationManager()
         locationManagerDelegate = LocationManagerDelegate(mapView: mapView, viewController: self, speedLabel: speedLabel)
@@ -79,8 +78,7 @@ class AddViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
     }
     
-    // Constraints
-    func setConstraints() {
+    private func setConstraints() {
         NSLayoutConstraint.activate([
             mapView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 5),
             mapView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -120),
@@ -108,9 +106,34 @@ class AddViewController: UIViewController, MKMapViewDelegate {
     }
     
     @objc private func toggleSaving() {
+        if isSaving {
+            let alertController = UIAlertController(title: "Nome da Rota", message: "Digite um nome para a rota", preferredStyle: .alert)
+            alertController.addTextField { (textField) in
+                textField.placeholder = "Nome"
+            }
+            let saveAction = UIAlertAction(title: "Salvar", style: .default) { [weak self] _ in
+                guard let routeName = alertController.textFields?.first?.text, !routeName.isEmpty else { return }
+                self?.saveCurrentRoute(name: routeName)
+            }
+            alertController.addAction(saveAction)
+            alertController.addAction(UIAlertAction(title: "Cancelar", style: .cancel))
+            present(alertController, animated: true)
+        } else {
+            startNewRoute()
+        }
         isSaving.toggle()
     }
-
+    
+    private func startNewRoute() {
+        routeCoordinates = []
+        currentPolyline = nil
+    }
+    
+    private func saveCurrentRoute(name: String) {
+        routes.addRoute(name: name, coordinates: routeCoordinates)
+        routeCoordinates = []
+        currentPolyline = nil
+    }
     
     func checkLocationAuthorization() {
         guard let locationManager = locationManager else { return }
@@ -127,7 +150,6 @@ class AddViewController: UIViewController, MKMapViewDelegate {
         }
     }
 }
-
 
 #Preview {
     AddViewController()

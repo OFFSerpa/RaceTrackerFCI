@@ -15,6 +15,7 @@
 		D013DBE02BF683F9007C04F6 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013DBDF2BF683F9007C04F6 /* CardView.swift */; };
 		D079A8DD2BFD0CD2008436D5 /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8DC2BFD0CD2008436D5 /* LocationManagerDelegate.swift */; };
 		D079A8DF2BFD2F30008436D5 /* SpeedLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8DE2BFD2F30008436D5 /* SpeedLabelView.swift */; };
+		D079A8E22BFD3DCD008436D5 /* RouteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8E12BFD3DCD008436D5 /* RouteController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D013DBDF2BF683F9007C04F6 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		D079A8DC2BFD0CD2008436D5 /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
 		D079A8DE2BFD2F30008436D5 /* SpeedLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLabelView.swift; sourceTree = "<group>"; };
+		D079A8E12BFD3DCD008436D5 /* RouteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				D013DBCD2BF54935007C04F6 /* ViewController.swift */,
 				D079A8DC2BFD0CD2008436D5 /* LocationManagerDelegate.swift */,
 				D013DBDD2BF557AF007C04F6 /* AddViewController.swift */,
+				D079A8E12BFD3DCD008436D5 /* RouteController.swift */,
 				D013DBD22BF54936007C04F6 /* Assets.xcassets */,
 				D013DBD72BF54936007C04F6 /* Info.plist */,
 				D013DBDF2BF683F9007C04F6 /* CardView.swift */,
@@ -153,6 +156,7 @@
 				D013DBCE2BF54935007C04F6 /* ViewController.swift in Sources */,
 				D013DBCA2BF54935007C04F6 /* AppDelegate.swift in Sources */,
 				D013DBDE2BF557AF007C04F6 /* AddViewController.swift in Sources */,
+				D079A8E22BFD3DCD008436D5 /* RouteController.swift in Sources */,
 				D013DBCC2BF54935007C04F6 /* SceneDelegate.swift in Sources */,
 				D013DBE02BF683F9007C04F6 /* CardView.swift in Sources */,
 				D079A8DF2BFD2F30008436D5 /* SpeedLabelView.swift in Sources */,

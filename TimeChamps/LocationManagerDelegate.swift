@@ -16,7 +16,7 @@ class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
     var currentRouteCoordinates: [CLLocationCoordinate2D] = []
     var isSaving: Bool = false
 
-    init(mapView: MKMapView, viewController: AddViewController, speedLabel: SpeedLabelView) { 
+    init(mapView: MKMapView, viewController: AddViewController, speedLabel: SpeedLabelView) {
         self.mapView = mapView
         self.viewController = viewController
         self.speedLabel = speedLabel
