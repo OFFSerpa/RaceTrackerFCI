@@ -52,6 +52,10 @@ class RouteTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        backgroundColor = .clear
+        contentView.backgroundColor = .clear
+        selectedBackgroundView = UIView() // Define uma view de fundo vazia para a seleção
+
         contentView.addSubview(cardView)
         cardView.addSubview(titleLabel)
         cardView.addSubview(distanceLabel)
@@ -70,7 +74,7 @@ class RouteTableViewCell: UITableViewCell {
             
             distanceLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             distanceLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            distanceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+            distanceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 3),
             
             bestTimeLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             bestTimeLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),

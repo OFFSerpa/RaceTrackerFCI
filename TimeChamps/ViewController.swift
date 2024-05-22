@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  TimeChamps
-//
-//  Created by Vinicius Serpa on 15/05/24.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -36,7 +29,8 @@ class ViewController: UIViewController {
         return tableView
     }()
     
-    let routes = Routes() // Instância de Routes para gerenciar as rotas
+    let routes = Routes()
+    var tableViewDelegate: TableViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,35 +86,19 @@ class ViewController: UIViewController {
     }
     
     func configureTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableViewDelegate = TableViewDelegate(routes: routes)
+        tableView.delegate = tableViewDelegate
+        tableView.dataSource = tableViewDelegate
         tableView.register(RouteTableViewCell.self, forCellReuseIdentifier: "RouteCell")
     }
     
     @objc func navigate() {
-        let destination = AddViewController(routes: routes) // Passa a instância de Routes para a AddViewController
+        let destination = AddViewController(routes: routes) 
         navigationController?.pushViewController(destination, animated: true)
     }
     
     @objc func updateTableView() {
         tableView.reloadData()
-    }
-}
-
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return routes.allRoutes.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RouteCell", for: indexPath) as! RouteTableViewCell
-        let route = routes.allRoutes[indexPath.row]
-        cell.configure(with: route)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
     }
 }
 
