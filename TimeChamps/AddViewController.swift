@@ -18,12 +18,26 @@ class AddViewController: UIViewController, MKMapViewDelegate {
     var currentPolyline: MKPolyline?
     
     let speedLabel = SpeedLabelView()
-    let routes = Routes() // Adiciona a instância de Routes para gerenciar as rotas
+    let routes: Routes
+    
+    init(routes: Routes) {
+        self.routes = routes
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     var isSaving: Bool = false {
         didSet {
             locationManagerDelegate?.isSaving = isSaving
             updateButtonTitle()
+            if isSaving {
+                startNewRoute()
+            } else {
+                showSaveRouteScreen()
+            }
         }
     }
     
@@ -106,21 +120,6 @@ class AddViewController: UIViewController, MKMapViewDelegate {
     }
     
     @objc private func toggleSaving() {
-        if isSaving {
-            let alertController = UIAlertController(title: "Nome da Rota", message: "Digite um nome para a rota", preferredStyle: .alert)
-            alertController.addTextField { (textField) in
-                textField.placeholder = "Nome"
-            }
-            let saveAction = UIAlertAction(title: "Salvar", style: .default) { [weak self] _ in
-                guard let routeName = alertController.textFields?.first?.text, !routeName.isEmpty else { return }
-                self?.saveCurrentRoute(name: routeName)
-            }
-            alertController.addAction(saveAction)
-            alertController.addAction(UIAlertAction(title: "Cancelar", style: .cancel))
-            present(alertController, animated: true)
-        } else {
-            startNewRoute()
-        }
         isSaving.toggle()
     }
     
@@ -129,10 +128,15 @@ class AddViewController: UIViewController, MKMapViewDelegate {
         currentPolyline = nil
     }
     
-    private func saveCurrentRoute(name: String) {
-        routes.addRoute(name: name, coordinates: routeCoordinates)
-        routeCoordinates = []
-        currentPolyline = nil
+    private func showSaveRouteScreen() {
+        let saveRouteVC = SaveRouteViewController()
+        saveRouteVC.routes = routes
+        saveRouteVC.routeCoordinates = routeCoordinates
+        saveRouteVC.modalPresentationStyle = .fullScreen
+        saveRouteVC.onSave = { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+        }
+        present(saveRouteVC, animated: true, completion: nil)
     }
     
     func checkLocationAuthorization() {
@@ -149,8 +153,37 @@ class AddViewController: UIViewController, MKMapViewDelegate {
             break
         }
     }
+    
+    func addPolyline() {
+        guard routeCoordinates.count > 1 else { return }
+        if let polyline = currentPolyline {
+            mapView.removeOverlay(polyline)
+        }
+        let polyline = MKPolyline(coordinates: routeCoordinates, count: routeCoordinates.count)
+        mapView.addOverlay(polyline)
+        currentPolyline = polyline
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        
+        if isSaving {
+            routeCoordinates.append(location.coordinate)
+            addPolyline()
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let polyline = overlay as? MKPolyline {
+            let renderer = MKPolylineRenderer(polyline: polyline)
+            renderer.strokeColor = .blue
+            renderer.lineWidth = 4
+            return renderer
+        }
+        return MKOverlayRenderer(overlay: overlay)
+    }
 }
 
 #Preview {
-    AddViewController()
+    AddViewController(routes: Routes())
 }

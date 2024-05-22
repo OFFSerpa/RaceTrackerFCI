@@ -34,13 +34,7 @@ class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
         if isSaving {
             currentRouteCoordinates.append(location.coordinate)
             viewController?.routeCoordinates.append(location.coordinate)
-            
-            if let polyline = viewController?.currentPolyline {
-                mapView.removeOverlay(polyline)
-            }
-
-            viewController?.currentPolyline = createPolyline()
-            mapView.addOverlay(viewController!.currentPolyline!)
+            viewController?.addPolyline()
         }
     }
 
@@ -63,9 +57,5 @@ class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
         if isSaving {
             isSaving = false
         }
-    }
-
-    private func createPolyline() -> MKPolyline {
-        return MKPolyline(coordinates: currentRouteCoordinates, count: currentRouteCoordinates.count)
     }
 }
