@@ -12,14 +12,15 @@ class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
     weak var mapView: MKMapView?
     weak var viewController: AddViewController?
     weak var speedLabel: SpeedLabelView?
+    let routeManager: RouteManager
 
-    var currentRouteCoordinates: [CLLocationCoordinate2D] = []
     var isSaving: Bool = false
 
-    init(mapView: MKMapView, viewController: AddViewController, speedLabel: SpeedLabelView) {
+    init(mapView: MKMapView, viewController: AddViewController, speedLabel: SpeedLabelView, routeManager: RouteManager) {
         self.mapView = mapView
         self.viewController = viewController
         self.speedLabel = speedLabel
+        self.routeManager = routeManager
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -32,9 +33,7 @@ class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
         speedLabel?.updateSpeed(speed: location.speed)
 
         if isSaving {
-            currentRouteCoordinates.append(location.coordinate)
-            viewController?.routeCoordinates.append(location.coordinate)
-            viewController?.addPolyline()
+            routeManager.addCoordinate(location.coordinate)
         }
     }
 
@@ -48,7 +47,7 @@ class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
 
     func startNewRoute() {
         if isSaving {
-            currentRouteCoordinates = []
+            routeManager.startNewRoute()
         }
         isSaving = true
     }

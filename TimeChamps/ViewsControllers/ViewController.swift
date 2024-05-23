@@ -1,3 +1,10 @@
+//
+//  ViewController.swift
+//  TimeChamps
+//
+//  Created by Vinicius Serpa on 15/05/24.
+//
+
 import UIKit
 
 class ViewController: UIViewController {
@@ -86,38 +93,19 @@ class ViewController: UIViewController {
     }
     
     func configureTableView() {
-        tableViewDelegate = TableViewDelegate(routes: routes)
+        tableViewDelegate = TableViewDelegate(routes: routes, navigationController: navigationController)
         tableView.delegate = tableViewDelegate
         tableView.dataSource = tableViewDelegate
         tableView.register(RouteTableViewCell.self, forCellReuseIdentifier: "RouteCell")
     }
     
     @objc func navigate() {
-        let destination = AddViewController(routes: routes) 
+        let destination = AddViewController(routes: routes)
         navigationController?.pushViewController(destination, animated: true)
     }
     
     @objc func updateTableView() {
         tableView.reloadData()
-    }
-}
-
-extension UIFont {
-    class func italicSystemFont(ofSize size: CGFloat, weight: UIFont.Weight = .regular) -> UIFont {
-        let font = UIFont.systemFont(ofSize: size, weight: weight)
-        switch weight {
-        case .ultraLight, .light, .thin, .regular:
-            return font.withTraits(.traitItalic, ofSize: size)
-        case .medium, .semibold, .bold, .heavy, .black:
-            return font.withTraits(.traitBold, .traitItalic, ofSize: size)
-        default:
-            return UIFont.italicSystemFont(ofSize: size)
-        }
-    }
-    
-    func withTraits(_ traits: UIFontDescriptor.SymbolicTraits..., ofSize size: CGFloat) -> UIFont {
-        let descriptor = self.fontDescriptor.withSymbolicTraits(UIFontDescriptor.SymbolicTraits(traits))
-        return UIFont(descriptor: descriptor!, size: size)
     }
 }
 

@@ -12,13 +12,16 @@
 		D013DBCE2BF54935007C04F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013DBCD2BF54935007C04F6 /* ViewController.swift */; };
 		D013DBD32BF54936007C04F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D013DBD22BF54936007C04F6 /* Assets.xcassets */; };
 		D013DBDE2BF557AF007C04F6 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013DBDD2BF557AF007C04F6 /* AddViewController.swift */; };
-		D013DBE02BF683F9007C04F6 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013DBDF2BF683F9007C04F6 /* CardView.swift */; };
 		D079A8DD2BFD0CD2008436D5 /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8DC2BFD0CD2008436D5 /* LocationManagerDelegate.swift */; };
 		D079A8DF2BFD2F30008436D5 /* SpeedLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8DE2BFD2F30008436D5 /* SpeedLabelView.swift */; };
-		D079A8E22BFD3DCD008436D5 /* RouteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8E12BFD3DCD008436D5 /* RouteController.swift */; };
+		D079A8E22BFD3DCD008436D5 /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8E12BFD3DCD008436D5 /* RouteModel.swift */; };
 		D079A8E42BFD8166008436D5 /* SaveRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8E32BFD8166008436D5 /* SaveRouteViewController.swift */; };
 		D079A8E62BFD891C008436D5 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8E52BFD891C008436D5 /* RouteTableViewCell.swift */; };
 		D079A8E92BFE620B008436D5 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8E82BFE620B008436D5 /* TableViewDelegate.swift */; };
+		D079A8EB2BFE63E6008436D5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8EA2BFE63E6008436D5 /* Extensions.swift */; };
+		D079A8ED2BFE66A0008436D5 /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8EC2BFE66A0008436D5 /* RouteManager.swift */; };
+		D079A8EF2BFE6AAA008436D5 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8EE2BFE6AAA008436D5 /* RouteDetailViewController.swift */; };
+		D079A8F22BFFADDC008436D5 /* MapViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8F12BFFADDC008436D5 /* MapViewComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,13 +32,16 @@
 		D013DBD22BF54936007C04F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D013DBD72BF54936007C04F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D013DBDD2BF557AF007C04F6 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
-		D013DBDF2BF683F9007C04F6 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		D079A8DC2BFD0CD2008436D5 /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
 		D079A8DE2BFD2F30008436D5 /* SpeedLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLabelView.swift; sourceTree = "<group>"; };
-		D079A8E12BFD3DCD008436D5 /* RouteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteController.swift; sourceTree = "<group>"; };
+		D079A8E12BFD3DCD008436D5 /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
 		D079A8E32BFD8166008436D5 /* SaveRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRouteViewController.swift; sourceTree = "<group>"; };
 		D079A8E52BFD891C008436D5 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
 		D079A8E82BFE620B008436D5 /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
+		D079A8EA2BFE63E6008436D5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D079A8EC2BFE66A0008436D5 /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
+		D079A8EE2BFE6AAA008436D5 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
+		D079A8F12BFFADDC008436D5 /* MapViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,15 +74,14 @@
 		D013DBC82BF54935007C04F6 /* TimeChamps */ = {
 			isa = PBXGroup;
 			children = (
+				D079A8EA2BFE63E6008436D5 /* Extensions.swift */,
+				D079A8F02BFE6AB0008436D5 /* ViewsControllers */,
 				D079A8E72BFE61F1008436D5 /* Delegates */,
 				D079A8E02BFD3556008436D5 /* Components */,
-				D079A8E32BFD8166008436D5 /* SaveRouteViewController.swift */,
-				D013DBCD2BF54935007C04F6 /* ViewController.swift */,
-				D013DBDD2BF557AF007C04F6 /* AddViewController.swift */,
-				D079A8E12BFD3DCD008436D5 /* RouteController.swift */,
+				D079A8EC2BFE66A0008436D5 /* RouteManager.swift */,
+				D079A8E12BFD3DCD008436D5 /* RouteModel.swift */,
 				D013DBD22BF54936007C04F6 /* Assets.xcassets */,
 				D013DBD72BF54936007C04F6 /* Info.plist */,
-				D013DBDF2BF683F9007C04F6 /* CardView.swift */,
 			);
 			path = TimeChamps;
 			sourceTree = "<group>";
@@ -86,6 +91,7 @@
 			children = (
 				D079A8DE2BFD2F30008436D5 /* SpeedLabelView.swift */,
 				D079A8E52BFD891C008436D5 /* RouteTableViewCell.swift */,
+				D079A8F12BFFADDC008436D5 /* MapViewComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -99,6 +105,17 @@
 				D079A8E82BFE620B008436D5 /* TableViewDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		D079A8F02BFE6AB0008436D5 /* ViewsControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D013DBCD2BF54935007C04F6 /* ViewController.swift */,
+				D013DBDD2BF557AF007C04F6 /* AddViewController.swift */,
+				D079A8EE2BFE6AAA008436D5 /* RouteDetailViewController.swift */,
+				D079A8E32BFD8166008436D5 /* SaveRouteViewController.swift */,
+			);
+			path = ViewsControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,12 +189,15 @@
 			files = (
 				D013DBCE2BF54935007C04F6 /* ViewController.swift in Sources */,
 				D013DBCA2BF54935007C04F6 /* AppDelegate.swift in Sources */,
+				D079A8EB2BFE63E6008436D5 /* Extensions.swift in Sources */,
+				D079A8EF2BFE6AAA008436D5 /* RouteDetailViewController.swift in Sources */,
+				D079A8ED2BFE66A0008436D5 /* RouteManager.swift in Sources */,
 				D013DBDE2BF557AF007C04F6 /* AddViewController.swift in Sources */,
-				D079A8E22BFD3DCD008436D5 /* RouteController.swift in Sources */,
+				D079A8E22BFD3DCD008436D5 /* RouteModel.swift in Sources */,
 				D013DBCC2BF54935007C04F6 /* SceneDelegate.swift in Sources */,
 				D079A8E92BFE620B008436D5 /* TableViewDelegate.swift in Sources */,
+				D079A8F22BFFADDC008436D5 /* MapViewComponent.swift in Sources */,
 				D079A8E62BFD891C008436D5 /* RouteTableViewCell.swift in Sources */,
-				D013DBE02BF683F9007C04F6 /* CardView.swift in Sources */,
 				D079A8DF2BFD2F30008436D5 /* SpeedLabelView.swift in Sources */,
 				D079A8DD2BFD0CD2008436D5 /* LocationManagerDelegate.swift in Sources */,
 				D079A8E42BFD8166008436D5 /* SaveRouteViewController.swift in Sources */,

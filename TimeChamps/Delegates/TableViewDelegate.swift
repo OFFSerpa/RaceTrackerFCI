@@ -9,11 +9,12 @@ import Foundation
 import UIKit
 
 class TableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
+    var routes: Routes
+    weak var navigationController: UINavigationController?
     
-    private let routes: Routes
-    
-    init(routes: Routes) {
+    init(routes: Routes, navigationController: UINavigationController?) {
         self.routes = routes
+        self.navigationController = navigationController
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -25,6 +26,13 @@ class TableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
         let route = routes.allRoutes[indexPath.row]
         cell.configure(with: route)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let route = routes.allRoutes[indexPath.row]
+        let routeDetailVC = RouteDetailViewController()
+        routeDetailVC.route = route
+        navigationController?.pushViewController(routeDetailVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

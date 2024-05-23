@@ -54,7 +54,7 @@ class RouteTableViewCell: UITableViewCell {
         
         backgroundColor = .clear
         contentView.backgroundColor = .clear
-        selectedBackgroundView = UIView() // Define uma view de fundo vazia para a seleção
+        selectedBackgroundView = UIView() 
 
         contentView.addSubview(cardView)
         cardView.addSubview(titleLabel)
