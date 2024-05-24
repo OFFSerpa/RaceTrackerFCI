@@ -9,11 +9,15 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var isDark: Bool = true
+    
+    
+ 
+    
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.text = "Trajetos"
         titleLabel.font = UIFont.italicSystemFont(ofSize: 34, weight: .bold)
-        titleLabel.textColor = .white
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
     }()
@@ -40,6 +44,11 @@ class ViewController: UIViewController {
     var tableViewDelegate: TableViewDelegate?
     
     override func viewDidLoad() {
+        
+        if self.traitCollection.userInterfaceStyle == .light{
+            isDark = false
+        }
+        
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.secondarySystemBackground
@@ -64,6 +73,9 @@ class ViewController: UIViewController {
     func setAddButton() {
         view.addSubview(addButton)
         self.addButton.addTarget(self, action: #selector(navigate), for: .touchUpInside)
+        
+        let color = isDark ? UIColor.white : UIColor.black
+        addButton.tintColor = color
         
         NSLayoutConstraint.activate([
             addButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
@@ -106,6 +118,7 @@ class ViewController: UIViewController {
     
     @objc func updateTableView() {
         tableView.reloadData()
+        
     }
 }
 

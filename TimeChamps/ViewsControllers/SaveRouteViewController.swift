@@ -84,6 +84,15 @@ class SaveRouteViewController: UIViewController {
         view.backgroundColor = UIColor.secondarySystemBackground
         setupUI()
         configureMap()
+        
+        nameTextField.delegate = self
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     private func setupUI() {
@@ -171,6 +180,13 @@ class SaveRouteViewController: UIViewController {
         distanceLabel.text = "Distância: 0 km"
         timeLabel.text = "Tempo: 0 min"
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension SaveRouteViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

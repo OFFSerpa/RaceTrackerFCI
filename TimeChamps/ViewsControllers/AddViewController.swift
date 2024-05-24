@@ -56,6 +56,7 @@ class AddViewController: UIViewController {
         routeManager.mapView = mapViewComponent.mapView
         configureLocationManager()
         setupUI()
+        
     }
     
     private func setupUI() {
@@ -143,6 +144,8 @@ class AddViewController: UIViewController {
         }
     }
 }
+
+
 
 #Preview {
     AddViewController(routes: Routes())
