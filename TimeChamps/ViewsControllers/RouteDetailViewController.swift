@@ -11,6 +11,7 @@ import MapKit
 
 class RouteDetailViewController: UIViewController {
     
+    let speedLabel = SpeedLabelView()
     var route: Route?
     var locationManager: CLLocationManager?
     var locationManagerDelegate: LocationManagerDelegate?
@@ -83,6 +84,9 @@ class RouteDetailViewController: UIViewController {
             view.addSubview($0)
         }
         
+        view.addSubview(speedLabel)
+
+        
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -95,6 +99,11 @@ class RouteDetailViewController: UIViewController {
             
             timeLabel.topAnchor.constraint(equalTo: bestTimeLabel.bottomAnchor, constant: 10),
             timeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            speedLabel.widthAnchor.constraint(equalToConstant: 100),
+            speedLabel.heightAnchor.constraint(equalToConstant: 100),
+            speedLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            speedLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -160),
             
             mapViewComponent.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 20),
             mapViewComponent.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -146,7 +155,7 @@ class RouteDetailViewController: UIViewController {
     
     private func configureLocationManager() {
         locationManager = CLLocationManager()
-        locationManagerDelegate = LocationManagerDelegate(mapView: mapViewComponent.mapView, viewController: self, routeManager: RouteManager(mapView: mapViewComponent.mapView))
+        locationManagerDelegate = LocationManagerDelegate(mapView: mapViewComponent.mapView, viewController: self,speedLabel: speedLabel, routeManager: RouteManager(mapView: mapViewComponent.mapView))
         locationManagerDelegate?.onFinish = { [weak self] in
             self?.stopRace()
         }
