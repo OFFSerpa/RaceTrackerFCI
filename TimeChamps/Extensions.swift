@@ -41,3 +41,16 @@ extension RouteDetailViewController: MKMapViewDelegate {
         return MKOverlayRenderer(overlay: overlay)
     }
 }
+
+
+extension RaceSummaryViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let polyline = overlay as? MKPolyline {
+            let renderer = MKPolylineRenderer(polyline: polyline)
+            renderer.strokeColor = .cyan
+            renderer.lineWidth = 8
+            return renderer
+        }
+        return MKOverlayRenderer(overlay: overlay)
+    }
+}

@@ -209,9 +209,10 @@ class RouteDetailViewController: UIViewController {
         let seconds = Int(elapsedTime) % 60
         let timeString = String(format: "%d:%02d", minutes, seconds)
         
-        let alert = UIAlertController(title: "Corrida Finalizada", message: "Você completou a corrida em \(timeString).", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
+        let raceSummaryVC = RaceSummaryViewController()
+        raceSummaryVC.route = route
+        raceSummaryVC.elapsedTime = elapsedTime
+        navigationController?.pushViewController(raceSummaryVC, animated: true)
     }
     
     func checkLocationAuthorization() {

@@ -6,6 +6,7 @@
 //
 
 import MapKit
+import CoreLocation
 
 class RoutePoint {
     var coordinate: CLLocationCoordinate2D
@@ -19,15 +20,21 @@ class RoutePoint {
 
 class Route {
     var name: String
-    var points: [RoutePoint]
     var distance: Double
     var bestTime: String
+    var points: [RoutePoint]
     
-    init(name: String, points: [RoutePoint], distance: Double, bestTime: String) {
+    var bestTimeInterval: TimeInterval? {
+        let components = bestTime.split(separator: ":").compactMap { Double($0) }
+        guard components.count == 2 else { return nil }
+        return (components[0] * 60) + components[1]
+    }
+    
+    init(name: String, distance: Double, bestTime: String, points: [RoutePoint]) {
         self.name = name
-        self.points = points
         self.distance = distance
         self.bestTime = bestTime
+        self.points = points
     }
 }
 
@@ -37,7 +44,7 @@ class Routes {
     func addRoute(name: String, points: [RoutePoint]) {
         let distance = calculateDistance(points: points)
         let bestTime = calculateBestTime(points: points)
-        let newRoute = Route(name: name, points: points, distance: distance, bestTime: bestTime)
+        let newRoute = Route(name: name, distance: distance, bestTime: bestTime, points: points)
         allRoutes.append(newRoute)
     }
     
@@ -48,7 +55,7 @@ class Routes {
             let end = CLLocation(latitude: points[i].coordinate.latitude, longitude: points[i].coordinate.longitude)
             totalDistance += start.distance(from: end)
         }
-        return totalDistance / 1000 
+        return totalDistance / 1000
     }
     
     public func calculateBestTime(points: [RoutePoint]) -> String {
