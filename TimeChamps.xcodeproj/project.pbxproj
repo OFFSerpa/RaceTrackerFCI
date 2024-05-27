@@ -23,6 +23,12 @@
 		D079A8EF2BFE6AAA008436D5 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8EE2BFE6AAA008436D5 /* RouteDetailViewController.swift */; };
 		D079A8F22BFFADDC008436D5 /* MapViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8F12BFFADDC008436D5 /* MapViewComponent.swift */; };
 		D0C1C7542C018D700024ED72 /* RaceSummaryViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1C7532C018D700024ED72 /* RaceSummaryViewController .swift */; };
+		D0C1C7D42C04FDBC0024ED72 /* Aldeia.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0C1C7D22C04FDBB0024ED72 /* Aldeia.geojson */; };
+		D0C1C7D52C04FDBC0024ED72 /* Interlagos.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0C1C7D32C04FDBB0024ED72 /* Interlagos.geojson */; };
+		D0C1C7D72C0503040024ED72 /* NelsonPiquet.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0C1C7D62C0503040024ED72 /* NelsonPiquet.geojson */; };
+		D0C1C7D92C0504C00024ED72 /* Piracicaba.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0C1C7D82C0504C00024ED72 /* Piracicaba.geojson */; };
+		D0C1C7DD2C05067F0024ED72 /* Taruma.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0C1C7DC2C05067F0024ED72 /* Taruma.geojson */; };
+		D0C1C7E12C0511BD0024ED72 /* SantaCruz.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0C1C7E02C0511BD0024ED72 /* SantaCruz.geojson */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +50,12 @@
 		D079A8EE2BFE6AAA008436D5 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
 		D079A8F12BFFADDC008436D5 /* MapViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewComponent.swift; sourceTree = "<group>"; };
 		D0C1C7532C018D700024ED72 /* RaceSummaryViewController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RaceSummaryViewController .swift"; sourceTree = "<group>"; };
+		D0C1C7D22C04FDBB0024ED72 /* Aldeia.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Aldeia.geojson; path = ../../../TimeChamps/TimeChamps/geojson/Aldeia.geojson; sourceTree = "<group>"; };
+		D0C1C7D32C04FDBB0024ED72 /* Interlagos.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Interlagos.geojson; sourceTree = "<group>"; };
+		D0C1C7D62C0503040024ED72 /* NelsonPiquet.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NelsonPiquet.geojson; sourceTree = "<group>"; };
+		D0C1C7D82C0504C00024ED72 /* Piracicaba.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Piracicaba.geojson; sourceTree = "<group>"; };
+		D0C1C7DC2C05067F0024ED72 /* Taruma.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Taruma.geojson; sourceTree = "<group>"; };
+		D0C1C7E02C0511BD0024ED72 /* SantaCruz.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SantaCruz.geojson; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +72,7 @@
 		D013DBBD2BF54934007C04F6 = {
 			isa = PBXGroup;
 			children = (
+				D0C1C7CF2C04FAA40024ED72 /* geojson */,
 				D013DBC82BF54935007C04F6 /* TimeChamps */,
 				D013DBC72BF54935007C04F6 /* Products */,
 			);
@@ -121,6 +134,19 @@
 			path = ViewsControllers;
 			sourceTree = "<group>";
 		};
+		D0C1C7CF2C04FAA40024ED72 /* geojson */ = {
+			isa = PBXGroup;
+			children = (
+				D0C1C7D82C0504C00024ED72 /* Piracicaba.geojson */,
+				D0C1C7E02C0511BD0024ED72 /* SantaCruz.geojson */,
+				D0C1C7DC2C05067F0024ED72 /* Taruma.geojson */,
+				D0C1C7D22C04FDBB0024ED72 /* Aldeia.geojson */,
+				D0C1C7D62C0503040024ED72 /* NelsonPiquet.geojson */,
+				D0C1C7D32C04FDBB0024ED72 /* Interlagos.geojson */,
+			);
+			path = geojson;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -180,6 +206,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D013DBD32BF54936007C04F6 /* Assets.xcassets in Resources */,
+				D0C1C7D52C04FDBC0024ED72 /* Interlagos.geojson in Resources */,
+				D0C1C7D92C0504C00024ED72 /* Piracicaba.geojson in Resources */,
+				D0C1C7D72C0503040024ED72 /* NelsonPiquet.geojson in Resources */,
+				D0C1C7D42C04FDBC0024ED72 /* Aldeia.geojson in Resources */,
+				D0C1C7DD2C05067F0024ED72 /* Taruma.geojson in Resources */,
+				D0C1C7E12C0511BD0024ED72 /* SantaCruz.geojson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

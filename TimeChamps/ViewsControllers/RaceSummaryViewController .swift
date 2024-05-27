@@ -12,6 +12,7 @@ class RaceSummaryViewController: UIViewController {
     
     var route: Route?
     var elapsedTime: TimeInterval?
+    var lapCount: Int = 0
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -41,6 +42,13 @@ class RaceSummaryViewController: UIViewController {
         return label
     }()
     
+    let lapCountLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
@@ -49,7 +57,7 @@ class RaceSummaryViewController: UIViewController {
     }
     
     private func setupUI() {
-        [titleLabel, mapView, timeLabel, bestTimeLabel].forEach { view.addSubview($0) }
+        [titleLabel, mapView, timeLabel, bestTimeLabel, lapCountLabel].forEach { view.addSubview($0) }
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -64,7 +72,10 @@ class RaceSummaryViewController: UIViewController {
             timeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             bestTimeLabel.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 10),
-            bestTimeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            bestTimeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            lapCountLabel.topAnchor.constraint(equalTo: bestTimeLabel.bottomAnchor, constant: 10),
+            lapCountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
     
@@ -78,6 +89,8 @@ class RaceSummaryViewController: UIViewController {
         
         let bestTime = route.bestTime
         bestTimeLabel.text = "Melhor Tempo: \(bestTime)"
+        
+        lapCountLabel.text = "Voltas: \(lapCount)"
         
         if let bestTimeInterval = route.bestTimeInterval, elapsedTime < bestTimeInterval {
             route.bestTime = timeString
@@ -95,7 +108,8 @@ class RaceSummaryViewController: UIViewController {
         regionRect.origin.x -= wPadding / 2
         regionRect.origin.y -= hPadding / 2
         mapView.setVisibleMapRect(regionRect, animated: true)
+        
+        mapView.delegate = self
     }
 }
-
 

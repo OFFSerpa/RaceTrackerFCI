@@ -68,7 +68,7 @@ class RouteTableViewCell: UITableViewCell {
         cardView.addSubview(mapViewComponent)
         cardView.addSubview(titleLabel)
         cardView.addSubview(distanceLabel)
-//        cardView.addSubview(bestTimeLabel)
+        cardView.addSubview(bestTimeLabel)
         cardView.addSubview(arrowImageView)
         
         NSLayoutConstraint.activate([
@@ -89,9 +89,9 @@ class RouteTableViewCell: UITableViewCell {
             distanceLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             distanceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
             
-//            bestTimeLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-//            bestTimeLabel.topAnchor.constraint(equalTo: distanceLabel.bottomAnchor, constant: 5),
-//            bestTimeLabel.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -10),
+            bestTimeLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            bestTimeLabel.topAnchor.constraint(equalTo: distanceLabel.bottomAnchor, constant: 5),
+            bestTimeLabel.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -10),
             
             arrowImageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -10),
             arrowImageView.centerYAnchor.constraint(equalTo: cardView.centerYAnchor)
