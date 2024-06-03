@@ -45,11 +45,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if self.traitCollection.userInterfaceStyle == .light {
-            isDark = false
-        }
-
-        self.view.backgroundColor = UIColor.secondarySystemBackground
+//        if self.traitCollection.userInterfaceStyle == .light {
+//            isDark = false
+//        }
+//
+//        self.view.backgroundColor = UIColor.secondarySystemBackground
+        
+        self.view.backgroundColor = UIColor.dynamic(light: .customYellow, dark: .customBlue)
 
         setElements()
         configureTableView()

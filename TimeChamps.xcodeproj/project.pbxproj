@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		649A9CF92C0E4DA0006124DF /* Aldeia.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 649A9CF82C0E4DA0006124DF /* Aldeia.geojson */; };
+		649A9CFB2C0E4DB4006124DF /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649A9CFA2C0E4DB4006124DF /* Colors.swift */; };
 		D013DBCA2BF54935007C04F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013DBC92BF54935007C04F6 /* AppDelegate.swift */; };
 		D013DBCC2BF54935007C04F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013DBCB2BF54935007C04F6 /* SceneDelegate.swift */; };
 		D013DBCE2BF54935007C04F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013DBCD2BF54935007C04F6 /* ViewController.swift */; };
@@ -23,7 +25,6 @@
 		D079A8EF2BFE6AAA008436D5 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8EE2BFE6AAA008436D5 /* RouteDetailViewController.swift */; };
 		D079A8F22BFFADDC008436D5 /* MapViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8F12BFFADDC008436D5 /* MapViewComponent.swift */; };
 		D0C1C7542C018D700024ED72 /* RaceSummaryViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1C7532C018D700024ED72 /* RaceSummaryViewController .swift */; };
-		D0C1C7D42C04FDBC0024ED72 /* Aldeia.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0C1C7D22C04FDBB0024ED72 /* Aldeia.geojson */; };
 		D0C1C7D52C04FDBC0024ED72 /* Interlagos.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0C1C7D32C04FDBB0024ED72 /* Interlagos.geojson */; };
 		D0C1C7D72C0503040024ED72 /* NelsonPiquet.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0C1C7D62C0503040024ED72 /* NelsonPiquet.geojson */; };
 		D0C1C7D92C0504C00024ED72 /* Piracicaba.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0C1C7D82C0504C00024ED72 /* Piracicaba.geojson */; };
@@ -32,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		649A9CF82C0E4DA0006124DF /* Aldeia.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Aldeia.geojson; sourceTree = "<group>"; };
+		649A9CFA2C0E4DB4006124DF /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D013DBC62BF54935007C04F6 /* TimeChamps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeChamps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D013DBC92BF54935007C04F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D013DBCB2BF54935007C04F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,7 +53,6 @@
 		D079A8EE2BFE6AAA008436D5 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
 		D079A8F12BFFADDC008436D5 /* MapViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewComponent.swift; sourceTree = "<group>"; };
 		D0C1C7532C018D700024ED72 /* RaceSummaryViewController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RaceSummaryViewController .swift"; sourceTree = "<group>"; };
-		D0C1C7D22C04FDBB0024ED72 /* Aldeia.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Aldeia.geojson; path = ../../../TimeChamps/TimeChamps/geojson/Aldeia.geojson; sourceTree = "<group>"; };
 		D0C1C7D32C04FDBB0024ED72 /* Interlagos.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Interlagos.geojson; sourceTree = "<group>"; };
 		D0C1C7D62C0503040024ED72 /* NelsonPiquet.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NelsonPiquet.geojson; sourceTree = "<group>"; };
 		D0C1C7D82C0504C00024ED72 /* Piracicaba.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Piracicaba.geojson; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				D079A8E12BFD3DCD008436D5 /* RouteModel.swift */,
 				D013DBD22BF54936007C04F6 /* Assets.xcassets */,
 				D013DBD72BF54936007C04F6 /* Info.plist */,
+				649A9CFA2C0E4DB4006124DF /* Colors.swift */,
 			);
 			path = TimeChamps;
 			sourceTree = "<group>";
@@ -137,10 +140,10 @@
 		D0C1C7CF2C04FAA40024ED72 /* geojson */ = {
 			isa = PBXGroup;
 			children = (
+				649A9CF82C0E4DA0006124DF /* Aldeia.geojson */,
 				D0C1C7D82C0504C00024ED72 /* Piracicaba.geojson */,
 				D0C1C7E02C0511BD0024ED72 /* SantaCruz.geojson */,
 				D0C1C7DC2C05067F0024ED72 /* Taruma.geojson */,
-				D0C1C7D22C04FDBB0024ED72 /* Aldeia.geojson */,
 				D0C1C7D62C0503040024ED72 /* NelsonPiquet.geojson */,
 				D0C1C7D32C04FDBB0024ED72 /* Interlagos.geojson */,
 			);
@@ -206,10 +209,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D013DBD32BF54936007C04F6 /* Assets.xcassets in Resources */,
+				649A9CF92C0E4DA0006124DF /* Aldeia.geojson in Resources */,
 				D0C1C7D52C04FDBC0024ED72 /* Interlagos.geojson in Resources */,
 				D0C1C7D92C0504C00024ED72 /* Piracicaba.geojson in Resources */,
 				D0C1C7D72C0503040024ED72 /* NelsonPiquet.geojson in Resources */,
-				D0C1C7D42C04FDBC0024ED72 /* Aldeia.geojson in Resources */,
 				D0C1C7DD2C05067F0024ED72 /* Taruma.geojson in Resources */,
 				D0C1C7E12C0511BD0024ED72 /* SantaCruz.geojson in Resources */,
 			);
@@ -231,6 +234,7 @@
 				D079A8E22BFD3DCD008436D5 /* RouteModel.swift in Sources */,
 				D013DBCC2BF54935007C04F6 /* SceneDelegate.swift in Sources */,
 				D079A8E92BFE620B008436D5 /* TableViewDelegate.swift in Sources */,
+				649A9CFB2C0E4DB4006124DF /* Colors.swift in Sources */,
 				D079A8F22BFFADDC008436D5 /* MapViewComponent.swift in Sources */,
 				D0C1C7542C018D700024ED72 /* RaceSummaryViewController .swift in Sources */,
 				D079A8E62BFD891C008436D5 /* RouteTableViewCell.swift in Sources */,
