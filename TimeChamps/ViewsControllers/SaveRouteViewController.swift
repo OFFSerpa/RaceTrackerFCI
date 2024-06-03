@@ -191,6 +191,3 @@ extension SaveRouteViewController: UITextFieldDelegate {
     }
 }
 
-#Preview {
-    SaveRouteViewController()
-}

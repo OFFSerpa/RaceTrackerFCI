@@ -146,7 +146,3 @@ class AddViewController: UIViewController {
 }
 
 
-
-#Preview {
-    AddViewController(routes: Routes())
-}

@@ -253,6 +253,3 @@ class RouteDetailViewController: UIViewController {
     }
 }
 
-#Preview {
-    RouteDetailViewController()
-}

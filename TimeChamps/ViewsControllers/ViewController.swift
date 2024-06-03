@@ -13,13 +13,22 @@ class ViewController: UIViewController {
     var isDark: Bool = true
     var isFirst: Bool = true
     
-
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.text = "Trajetos"
         titleLabel.font = UIFont.italicSystemFont(ofSize: 34, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
+    }()
+    
+    let addButton: UIButton = {
+        let button = UIButton()
+        let config = UIImage.SymbolConfiguration(textStyle: .title1)
+        let image = UIImage(systemName: "plus.circle", withConfiguration: config)
+        button.setImage(image, for: .normal)
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
 
     let tableView: UITableView = {
@@ -66,8 +75,9 @@ class ViewController: UIViewController {
             routes.addGeoJSONRoute(name: "Tarumã ", overlays: overlays)
         }
         
-
         NotificationCenter.default.addObserver(self, selector: #selector(updateTableView), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        updateTableView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -84,6 +94,25 @@ class ViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(tableView)
         setConstraints()
+        setAddButton()
+    }
+    
+    func setAddButton() {
+        view.addSubview(addButton)
+        self.addButton.addTarget(self, action: #selector(navigate), for: .touchUpInside)
+        
+        let color = isDark ? UIColor.white : UIColor.black
+        addButton.tintColor = color
+        
+        NSLayoutConstraint.activate([
+            addButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
+            addButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 5)
+        ])
+    }
+    
+    @objc func navigate() {
+        let destination = AddViewController(routes: routes)
+        navigationController?.pushViewController(destination, animated: true)
     }
 
     func setConstraints() {
@@ -118,8 +147,4 @@ class ViewController: UIViewController {
             isFirst = false
         }
     }
-}
-
-#Preview {
-    ViewController()
 }
