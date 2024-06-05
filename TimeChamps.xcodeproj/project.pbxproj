@@ -92,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				D079A8EA2BFE63E6008436D5 /* Extensions.swift */,
+				649A9CFA2C0E4DB4006124DF /* Colors.swift */,
 				D079A8F02BFE6AB0008436D5 /* ViewsControllers */,
 				D079A8E72BFE61F1008436D5 /* Delegates */,
 				D079A8E02BFD3556008436D5 /* Components */,
@@ -99,7 +100,6 @@
 				D079A8E12BFD3DCD008436D5 /* RouteModel.swift */,
 				D013DBD22BF54936007C04F6 /* Assets.xcassets */,
 				D013DBD72BF54936007C04F6 /* Info.plist */,
-				649A9CFA2C0E4DB4006124DF /* Colors.swift */,
 			);
 			path = TimeChamps;
 			sourceTree = "<group>";

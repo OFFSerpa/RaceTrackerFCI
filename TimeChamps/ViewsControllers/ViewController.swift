@@ -51,7 +51,7 @@ class ViewController: UIViewController {
 //
 //        self.view.backgroundColor = UIColor.secondarySystemBackground
         
-        self.view.backgroundColor = UIColor.dynamic(light: .customYellow, dark: .customBlue)
+        self.view.backgroundColor = UIColor.dynamic(light: .coolBlue, dark: .backBlack)
 
         setElements()
         configureTableView()
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
             routes.addGeoJSONRoute(name: "Jacarepaguá", overlays: overlays)
         }
         if let overlays = routeManager.loadGeoJSON(filePath: Bundle.main.path(forResource: "Piracicaba", ofType: "geojson")!) {
-            routes.addGeoJSONRoute(name: "Autodromo de Piracicaba", overlays: overlays)
+            routes.addGeoJSONRoute(name: "Piracicaba", overlays: overlays)
         }
         if let overlays = routeManager.loadGeoJSON(filePath: Bundle.main.path(forResource: "SantaCruz", ofType: "geojson")!) {
             routes.addGeoJSONRoute(name: "Santa Cruz ", overlays: overlays)

@@ -11,7 +11,7 @@ class RouteTableViewCell: UITableViewCell {
     
     let cardView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray4
+        view.backgroundColor = UIColor.dynamic(light: .coolWhite, dark: .cardBlue)
         view.layer.cornerRadius = 10
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -27,8 +27,9 @@ class RouteTableViewCell: UITableViewCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = .white
+        label.font = UIFont.italicSystemFont(ofSize: 24, weight: .semibold)
+        label.textColor = UIColor.dynamic(light: .black, dark: .white)
+        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -36,7 +37,7 @@ class RouteTableViewCell: UITableViewCell {
     let distanceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .white
+        label.textColor = UIColor.dynamic(light: .black, dark: .white)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -52,7 +53,7 @@ class RouteTableViewCell: UITableViewCell {
     let arrowImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.right")
-        imageView.tintColor = .white
+        imageView.tintColor = UIColor.dynamic(light: .black, dark: .white)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
