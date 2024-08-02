@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+import SwiftUI
 
 class RouteDetailViewController: UIViewController {
     
@@ -253,3 +254,6 @@ class RouteDetailViewController: UIViewController {
     }
 }
 
+#Preview {
+    RouteDetailViewController()
+}

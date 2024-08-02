@@ -30,6 +30,7 @@ class RaceSummaryViewController: UIViewController {
     
     let timeLabel: UILabel = {
         let label = UILabel()
+        label.text = "0 min"
         label.font = UIFont.systemFont(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -37,6 +38,7 @@ class RaceSummaryViewController: UIViewController {
     
     let bestTimeLabel: UILabel = {
         let label = UILabel()
+        label.text = "10 min"
         label.font = UIFont.systemFont(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -44,6 +46,7 @@ class RaceSummaryViewController: UIViewController {
     
     let lapCountLabel: UILabel = {
         let label = UILabel()
+        label.text = "0 voltas"
         label.font = UIFont.systemFont(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -113,3 +116,6 @@ class RaceSummaryViewController: UIViewController {
     }
 }
 
+#Preview {
+    RaceSummaryViewController()
+}

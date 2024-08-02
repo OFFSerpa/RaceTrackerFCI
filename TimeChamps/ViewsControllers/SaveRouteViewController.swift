@@ -35,7 +35,7 @@ class SaveRouteViewController: UIViewController {
     
     let distanceLabel: UILabel = {
         let label = UILabel()
-        label.text = "Distância: 0 km"
+        label.text = "0 km"
         label.font = UIFont.systemFont(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -44,7 +44,7 @@ class SaveRouteViewController: UIViewController {
     
     let timeLabel: UILabel = {
         let label = UILabel()
-        label.text = "Tempo: 0 min"
+        label.text = "0 min"
         label.font = UIFont.systemFont(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -143,8 +143,8 @@ class SaveRouteViewController: UIViewController {
         
         if let routes = routes {
             let distance = routes.calculateDistance(points: routePoints)
-            distanceLabel.text = String(format: "Distância: %.2f km", distance)
-            timeLabel.text = "Tempo: \(routes.calculateBestTime(points: routePoints))"
+            distanceLabel.text = String(format: "%.2f km", distance)
+            timeLabel.text = "\(routes.calculateBestTime(points: routePoints))"
         }
         
         adjustMapZoom()
@@ -178,7 +178,7 @@ class SaveRouteViewController: UIViewController {
     @objc private func deleteRoute() {
         mapViewComponent.mapView.removeOverlays(mapViewComponent.mapView.overlays)
         routePoints.removeAll()
-        distanceLabel.text = "Distância: 0 km"
+        distanceLabel.text = "0 km"
         timeLabel.text = "Tempo: 0 min"
         dismiss(animated: true, completion: nil)
     }
@@ -191,3 +191,6 @@ extension SaveRouteViewController: UITextFieldDelegate {
     }
 }
 
+#Preview {
+    SaveRouteViewController()
+}

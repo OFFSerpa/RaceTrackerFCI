@@ -60,7 +60,7 @@ class RouteManager {
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: filePath))
             let geoJSON = try MKGeoJSONDecoder().decode(data)
-            let overlays = geoJSON.compactMap { $0 as? MKGeoJSONObject }.flatMap { geoJSONObject -> [MKOverlay] in
+            let overlays = geoJSON.compactMap { $0 as MKGeoJSONObject }.flatMap { geoJSONObject -> [MKOverlay] in
                 if let feature = geoJSONObject as? MKGeoJSONFeature, let geometry = feature.geometry.first {
                     if let polyline = geometry as? MKPolyline {
                         return [polyline]

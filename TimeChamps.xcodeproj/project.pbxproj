@@ -91,6 +91,7 @@
 		D013DBC82BF54935007C04F6 /* TimeChamps */ = {
 			isa = PBXGroup;
 			children = (
+				649A9CFA2C0E4DB4006124DF /* Colors.swift */,
 				D079A8EA2BFE63E6008436D5 /* Extensions.swift */,
 				D079A8F02BFE6AB0008436D5 /* ViewsControllers */,
 				D079A8E72BFE61F1008436D5 /* Delegates */,
@@ -99,7 +100,6 @@
 				D079A8E12BFD3DCD008436D5 /* RouteModel.swift */,
 				D013DBD22BF54936007C04F6 /* Assets.xcassets */,
 				D013DBD72BF54936007C04F6 /* Info.plist */,
-				649A9CFA2C0E4DB4006124DF /* Colors.swift */,
 			);
 			path = TimeChamps;
 			sourceTree = "<group>";
@@ -384,7 +384,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -420,7 +420,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
