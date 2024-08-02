@@ -93,6 +93,7 @@
 			children = (
 				649A9CFA2C0E4DB4006124DF /* Colors.swift */,
 				D079A8EA2BFE63E6008436D5 /* Extensions.swift */,
+				649A9CFA2C0E4DB4006124DF /* Colors.swift */,
 				D079A8F02BFE6AB0008436D5 /* ViewsControllers */,
 				D079A8E72BFE61F1008436D5 /* Delegates */,
 				D079A8E02BFD3556008436D5 /* Components */,

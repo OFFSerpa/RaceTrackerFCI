@@ -17,7 +17,8 @@ class RaceSummaryViewController: UIViewController {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Resumo da Corrida"
-        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.font = UIFont.italicSystemFont(ofSize: 20, weight: .regular)
+        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -40,6 +41,7 @@ class RaceSummaryViewController: UIViewController {
         let label = UILabel()
         label.text = "10 min"
         label.font = UIFont.systemFont(ofSize: 18)
+        label.textColor = UIColor.dynamic(light: .black, dark: .white)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -48,6 +50,7 @@ class RaceSummaryViewController: UIViewController {
         let label = UILabel()
         label.text = "0 voltas"
         label.font = UIFont.systemFont(ofSize: 18)
+        label.textColor = UIColor.dynamic(light: .black, dark: .white)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
