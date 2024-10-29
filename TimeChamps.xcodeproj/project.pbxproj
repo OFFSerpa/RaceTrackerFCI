@@ -24,6 +24,9 @@
 		D079A8ED2BFE66A0008436D5 /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8EC2BFE66A0008436D5 /* RouteManager.swift */; };
 		D079A8EF2BFE6AAA008436D5 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8EE2BFE6AAA008436D5 /* RouteDetailViewController.swift */; };
 		D079A8F22BFFADDC008436D5 /* MapViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8F12BFFADDC008436D5 /* MapViewComponent.swift */; };
+		D08CAA1C2CD067C500122E9C /* SpeedLabelUI .swift in Sources */ = {isa = PBXBuildFile; fileRef = D08CAA1B2CD067C500122E9C /* SpeedLabelUI .swift */; };
+		D08CAA1F2CD06AD900122E9C /* CardViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08CAA1E2CD06AD900122E9C /* CardViewUI.swift */; };
+		D08CAA232CD0712E00122E9C /* RoutePointModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08CAA222CD0712900122E9C /* RoutePointModel.swift */; };
 		D0C1C7542C018D700024ED72 /* RaceSummaryViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1C7532C018D700024ED72 /* RaceSummaryViewController .swift */; };
 		D0C1C7D52C04FDBC0024ED72 /* Interlagos.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0C1C7D32C04FDBB0024ED72 /* Interlagos.geojson */; };
 		D0C1C7D72C0503040024ED72 /* NelsonPiquet.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0C1C7D62C0503040024ED72 /* NelsonPiquet.geojson */; };
@@ -52,6 +55,9 @@
 		D079A8EC2BFE66A0008436D5 /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 		D079A8EE2BFE6AAA008436D5 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
 		D079A8F12BFFADDC008436D5 /* MapViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewComponent.swift; sourceTree = "<group>"; };
+		D08CAA1B2CD067C500122E9C /* SpeedLabelUI .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpeedLabelUI .swift"; sourceTree = "<group>"; };
+		D08CAA1E2CD06AD900122E9C /* CardViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewUI.swift; sourceTree = "<group>"; };
+		D08CAA222CD0712900122E9C /* RoutePointModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePointModel.swift; sourceTree = "<group>"; };
 		D0C1C7532C018D700024ED72 /* RaceSummaryViewController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RaceSummaryViewController .swift"; sourceTree = "<group>"; };
 		D0C1C7D32C04FDBB0024ED72 /* Interlagos.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Interlagos.geojson; sourceTree = "<group>"; };
 		D0C1C7D62C0503040024ED72 /* NelsonPiquet.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NelsonPiquet.geojson; sourceTree = "<group>"; };
@@ -74,6 +80,7 @@
 		D013DBBD2BF54934007C04F6 = {
 			isa = PBXGroup;
 			children = (
+				D08CAA202CD0711000122E9C /* SwiftUIApp */,
 				D0C1C7CF2C04FAA40024ED72 /* geojson */,
 				D013DBC82BF54935007C04F6 /* TimeChamps */,
 				D013DBC72BF54935007C04F6 /* Products */,
@@ -91,12 +98,11 @@
 		D013DBC82BF54935007C04F6 /* TimeChamps */ = {
 			isa = PBXGroup;
 			children = (
-				649A9CFA2C0E4DB4006124DF /* Colors.swift */,
 				D079A8EA2BFE63E6008436D5 /* Extensions.swift */,
 				649A9CFA2C0E4DB4006124DF /* Colors.swift */,
 				D079A8F02BFE6AB0008436D5 /* ViewsControllers */,
 				D079A8E72BFE61F1008436D5 /* Delegates */,
-				D079A8E02BFD3556008436D5 /* Components */,
+				D079A8E02BFD3556008436D5 /* ComponentsUiKIt */,
 				D079A8EC2BFE66A0008436D5 /* RouteManager.swift */,
 				D079A8E12BFD3DCD008436D5 /* RouteModel.swift */,
 				D013DBD22BF54936007C04F6 /* Assets.xcassets */,
@@ -105,14 +111,14 @@
 			path = TimeChamps;
 			sourceTree = "<group>";
 		};
-		D079A8E02BFD3556008436D5 /* Components */ = {
+		D079A8E02BFD3556008436D5 /* ComponentsUiKIt */ = {
 			isa = PBXGroup;
 			children = (
 				D079A8DE2BFD2F30008436D5 /* SpeedLabelView.swift */,
 				D079A8E52BFD891C008436D5 /* RouteTableViewCell.swift */,
 				D079A8F12BFFADDC008436D5 /* MapViewComponent.swift */,
 			);
-			path = Components;
+			path = ComponentsUiKIt;
 			sourceTree = "<group>";
 		};
 		D079A8E72BFE61F1008436D5 /* Delegates */ = {
@@ -136,6 +142,32 @@
 				D0C1C7532C018D700024ED72 /* RaceSummaryViewController .swift */,
 			);
 			path = ViewsControllers;
+			sourceTree = "<group>";
+		};
+		D08CAA1A2CD0679900122E9C /* ComponentsSwifUI */ = {
+			isa = PBXGroup;
+			children = (
+				D08CAA1B2CD067C500122E9C /* SpeedLabelUI .swift */,
+				D08CAA1E2CD06AD900122E9C /* CardViewUI.swift */,
+			);
+			path = ComponentsSwifUI;
+			sourceTree = "<group>";
+		};
+		D08CAA202CD0711000122E9C /* SwiftUIApp */ = {
+			isa = PBXGroup;
+			children = (
+				D08CAA212CD0711E00122E9C /* Models */,
+				D08CAA1A2CD0679900122E9C /* ComponentsSwifUI */,
+			);
+			path = SwiftUIApp;
+			sourceTree = "<group>";
+		};
+		D08CAA212CD0711E00122E9C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D08CAA222CD0712900122E9C /* RoutePointModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		D0C1C7CF2C04FAA40024ED72 /* geojson */ = {
@@ -226,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D08CAA1F2CD06AD900122E9C /* CardViewUI.swift in Sources */,
 				D013DBCE2BF54935007C04F6 /* ViewController.swift in Sources */,
 				D013DBCA2BF54935007C04F6 /* AppDelegate.swift in Sources */,
 				D079A8EB2BFE63E6008436D5 /* Extensions.swift in Sources */,
@@ -237,7 +270,9 @@
 				D079A8E92BFE620B008436D5 /* TableViewDelegate.swift in Sources */,
 				649A9CFB2C0E4DB4006124DF /* Colors.swift in Sources */,
 				D079A8F22BFFADDC008436D5 /* MapViewComponent.swift in Sources */,
+				D08CAA1C2CD067C500122E9C /* SpeedLabelUI .swift in Sources */,
 				D0C1C7542C018D700024ED72 /* RaceSummaryViewController .swift in Sources */,
+				D08CAA232CD0712E00122E9C /* RoutePointModel.swift in Sources */,
 				D079A8E62BFD891C008436D5 /* RouteTableViewCell.swift in Sources */,
 				D079A8DF2BFD2F30008436D5 /* SpeedLabelView.swift in Sources */,
 				D079A8DD2BFD0CD2008436D5 /* LocationManagerDelegate.swift in Sources */,
