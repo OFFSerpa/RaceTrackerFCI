@@ -11,7 +11,7 @@ import CoreLocation
 
 struct SpeedLabelUI_: View {
     
-    @State private var speedInKmH: String = "0"
+     var speedInKmH: String
     
     var body: some View {
         ZStack {
@@ -32,13 +32,5 @@ struct SpeedLabelUI_: View {
             }
         }.frame(height: 100)
     }
-    
-    func updateSpeed(speed: CLLocationSpeed) {
-         let speedInKmH = speed * 3.6
-         self.speedInKmH = String(format: "%.0f", speedInKmH)
-     }
 }
 
-#Preview {
-    SpeedLabelUI_()
-}

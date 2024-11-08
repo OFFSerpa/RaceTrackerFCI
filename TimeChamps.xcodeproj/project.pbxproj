@@ -37,6 +37,10 @@
 		D0DFD6812CD19D1A00380B9D /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DFD6802CD19D1A00380B9D /* Routes.swift */; };
 		D0DFD6832CD19DC000380B9D /* MapViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DFD6822CD19DC000380B9D /* MapViewUI.swift */; };
 		D0DFD6852CD19DEC00380B9D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DFD6842CD19DEB00380B9D /* Coordinator.swift */; };
+		D0DFD6882CD19EC300380B9D /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DFD6872CD19EC100380B9D /* AddView.swift */; };
+		D0DFD68B2CD19EF300380B9D /* AddRouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DFD68A2CD19EF300380B9D /* AddRouteViewModel.swift */; };
+		D0DFD68D2CD19F1200380B9D /* AddRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DFD68C2CD19F1200380B9D /* AddRouteView.swift */; };
+		D0DFD68F2CD1A25E00380B9D /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DFD68E2CD1A25E00380B9D /* RouteManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +76,10 @@
 		D0DFD6802CD19D1A00380B9D /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		D0DFD6822CD19DC000380B9D /* MapViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewUI.swift; sourceTree = "<group>"; };
 		D0DFD6842CD19DEB00380B9D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		D0DFD6872CD19EC100380B9D /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		D0DFD68A2CD19EF300380B9D /* AddRouteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRouteViewModel.swift; sourceTree = "<group>"; };
+		D0DFD68C2CD19F1200380B9D /* AddRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRouteView.swift; sourceTree = "<group>"; };
+		D0DFD68E2CD1A25E00380B9D /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +163,7 @@
 		D08CAA1A2CD0679900122E9C /* ComponentsSwifUI */ = {
 			isa = PBXGroup;
 			children = (
+				D0DFD6872CD19EC100380B9D /* AddView.swift */,
 				D0DFD6822CD19DC000380B9D /* MapViewUI.swift */,
 				D08CAA1B2CD067C500122E9C /* SpeedLabelUI .swift */,
 				D08CAA1E2CD06AD900122E9C /* CardViewUI.swift */,
@@ -165,6 +174,8 @@
 		D08CAA202CD0711000122E9C /* SwiftUIApp */ = {
 			isa = PBXGroup;
 			children = (
+				D0DFD6892CD19EED00380B9D /* ViewModel */,
+				D0DFD6862CD19E9500380B9D /* Views */,
 				D08CAA212CD0711E00122E9C /* Models */,
 				D08CAA1A2CD0679900122E9C /* ComponentsSwifUI */,
 			);
@@ -193,6 +204,23 @@
 				D0C1C7D32C04FDBB0024ED72 /* Interlagos.geojson */,
 			);
 			path = geojson;
+			sourceTree = "<group>";
+		};
+		D0DFD6862CD19E9500380B9D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D0DFD68C2CD19F1200380B9D /* AddRouteView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D0DFD6892CD19EED00380B9D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D0DFD68E2CD1A25E00380B9D /* RouteManager.swift */,
+				D0DFD68A2CD19EF300380B9D /* AddRouteViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,11 +300,14 @@
 			files = (
 				D08CAA1F2CD06AD900122E9C /* CardViewUI.swift in Sources */,
 				D0DFD6812CD19D1A00380B9D /* Routes.swift in Sources */,
+				D0DFD68B2CD19EF300380B9D /* AddRouteViewModel.swift in Sources */,
 				D013DBCE2BF54935007C04F6 /* ViewController.swift in Sources */,
 				D013DBCA2BF54935007C04F6 /* AppDelegate.swift in Sources */,
 				D0DFD67F2CD19CFD00380B9D /* RouteModel.swift in Sources */,
+				D0DFD68F2CD1A25E00380B9D /* RouteManager.swift in Sources */,
 				D079A8EB2BFE63E6008436D5 /* Extensions.swift in Sources */,
 				D079A8EF2BFE6AAA008436D5 /* RouteDetailViewController.swift in Sources */,
+				D0DFD68D2CD19F1200380B9D /* AddRouteView.swift in Sources */,
 				D079A8ED2BFE66A0008436D5 /* RouteManager.swift in Sources */,
 				D013DBDE2BF557AF007C04F6 /* AddViewController.swift in Sources */,
 				D079A8E22BFD3DCD008436D5 /* RouteModel.swift in Sources */,
@@ -290,6 +321,7 @@
 				D0DFD6852CD19DEC00380B9D /* Coordinator.swift in Sources */,
 				D08CAA232CD0712E00122E9C /* RoutePointModel.swift in Sources */,
 				D079A8E62BFD891C008436D5 /* RouteTableViewCell.swift in Sources */,
+				D0DFD6882CD19EC300380B9D /* AddView.swift in Sources */,
 				D079A8DF2BFD2F30008436D5 /* SpeedLabelView.swift in Sources */,
 				D079A8DD2BFD0CD2008436D5 /* LocationManagerDelegate.swift in Sources */,
 				D079A8E42BFD8166008436D5 /* SaveRouteViewController.swift in Sources */,
