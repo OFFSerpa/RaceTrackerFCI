@@ -74,7 +74,7 @@
 		D013DBBD2BF54934007C04F6 = {
 			isa = PBXGroup;
 			children = (
-				D0C1C7CF2C04FAA40024ED72 /* geojson */,
+				D0C1C7CF2C04FAA40024ED72 /* geojson - mocks */,
 				D013DBC82BF54935007C04F6 /* TimeChamps */,
 				D013DBC72BF54935007C04F6 /* Products */,
 			);
@@ -91,13 +91,10 @@
 		D013DBC82BF54935007C04F6 /* TimeChamps */ = {
 			isa = PBXGroup;
 			children = (
-				D079A8EA2BFE63E6008436D5 /* Extensions.swift */,
-				649A9CFA2C0E4DB4006124DF /* Colors.swift */,
-				D079A8F02BFE6AB0008436D5 /* ViewsControllers */,
+				D07F15DE2DC984900068C961 /* Resources */,
+				D07F15DD2DC984740068C961 /* Views */,
+				D07F15DC2DC984600068C961 /* Models */,
 				D079A8E72BFE61F1008436D5 /* Delegates */,
-				D079A8E02BFD3556008436D5 /* ComponentsUiKIt */,
-				D079A8EC2BFE66A0008436D5 /* RouteManager.swift */,
-				D079A8E12BFD3DCD008436D5 /* RouteModel.swift */,
 				D013DBD22BF54936007C04F6 /* Assets.xcassets */,
 				D013DBD72BF54936007C04F6 /* Info.plist */,
 			);
@@ -137,7 +134,34 @@
 			path = ViewsControllers;
 			sourceTree = "<group>";
 		};
-		D0C1C7CF2C04FAA40024ED72 /* geojson */ = {
+		D07F15DC2DC984600068C961 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D079A8EC2BFE66A0008436D5 /* RouteManager.swift */,
+				D079A8E12BFD3DCD008436D5 /* RouteModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D07F15DD2DC984740068C961 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D079A8F02BFE6AB0008436D5 /* ViewsControllers */,
+				D079A8E02BFD3556008436D5 /* ComponentsUiKIt */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D07F15DE2DC984900068C961 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D079A8EA2BFE63E6008436D5 /* Extensions.swift */,
+				649A9CFA2C0E4DB4006124DF /* Colors.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D0C1C7CF2C04FAA40024ED72 /* geojson - mocks */ = {
 			isa = PBXGroup;
 			children = (
 				649A9CF82C0E4DA0006124DF /* Aldeia.geojson */,
@@ -147,7 +171,7 @@
 				D0C1C7D62C0503040024ED72 /* NelsonPiquet.geojson */,
 				D0C1C7D32C04FDBB0024ED72 /* Interlagos.geojson */,
 			);
-			path = geojson;
+			path = "geojson - mocks";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
