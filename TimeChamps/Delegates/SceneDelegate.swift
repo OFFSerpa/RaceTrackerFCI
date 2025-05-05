@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  TimeChamps
 //
-//  Created by Vinicius Serpa on 15/05/24.
+//  Created by Vinicius Serpa on 27/04/25.
 //
 
 import UIKit

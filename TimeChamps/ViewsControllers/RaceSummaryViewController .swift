@@ -2,7 +2,7 @@
 //  RaceSummaryViewController .swift
 //  TimeChamps
 //
-//  Created by Vinicius Serpa on 25/05/24.
+//  Created by Vinicius Serpa on 26/04/25.
 //
 
 import UIKit

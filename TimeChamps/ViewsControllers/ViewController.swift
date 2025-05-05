@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  TimeChamps
 //
-//  Created by Vinicius Serpa on 15/05/24.
+//  Created by Vinicius Serpa on 25/04/25.
 //
 
 import UIKit
@@ -44,12 +44,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        if self.traitCollection.userInterfaceStyle == .light {
-//            isDark = false
-//        }
-//
-//        self.view.backgroundColor = UIColor.secondarySystemBackground
         
         self.view.backgroundColor = UIColor.dynamic(light: .coolBlue, dark: .backBlack)
 

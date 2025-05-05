@@ -2,7 +2,7 @@
 //  RouteTableViewCell.swift
 //  TimeChamps
 //
-//  Created by Vinicius Serpa on 21/05/24.
+//  Created by Vinicius Serpa on 28/04/25.
 //
 
 import UIKit
