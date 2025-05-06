@@ -14,11 +14,11 @@ class AddViewController: UIViewController {
     var locationManagerDelegate: LocationManagerDelegate?
     let routeManager: RouteManager
     let speedLabel = SpeedLabelView()
-    let routes: Routes
+    let routes: RouteRepository
     
     let mapViewComponent = MapViewComponent()
     
-    init(routes: Routes) {
+    init(routes: RouteRepository) {
         self.routes = routes
         self.routeManager = RouteManager(mapView: nil)
         super.init(nibName: nil, bundle: nil)
@@ -120,7 +120,7 @@ class AddViewController: UIViewController {
     
     private func showSaveRouteScreen() {
         let saveRouteVC = SaveRouteViewController()
-        saveRouteVC.routes = routes
+        saveRouteVC.routeRepository = routes
         saveRouteVC.routePoints = routeManager.routePoints
         saveRouteVC.modalPresentationStyle = .fullScreen
         saveRouteVC.onSave = { [weak self] in

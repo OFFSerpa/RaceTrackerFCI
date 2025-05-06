@@ -5,6 +5,7 @@
 ////  Created by Vinicius Serpa on 26/04/25.
 ////
 //
+
 import MapKit
 
 class RouteManager {
@@ -12,13 +13,13 @@ class RouteManager {
     var currentPolyline: MKPolyline?
     var mapView: MKMapView?
 
-    init(mapView: MKMapView?) {
+    init(mapView: MKMapView? = nil) {
         self.mapView = mapView
     }
 
     func startNewRoute() {
         routePoints = []
-        currentPolyline = nil
+        removeCurrentPolyline()
     }
 
     func addCoordinate(_ coordinate: CLLocationCoordinate2D) {
@@ -27,11 +28,10 @@ class RouteManager {
         addPolyline()
     }
 
-    func addPolyline() {
+    private func addPolyline() {
         guard routePoints.count > 1 else { return }
-        if let polyline = currentPolyline {
-            mapView?.removeOverlay(polyline)
-        }
+        removeCurrentPolyline()
+
         let coordinates = routePoints.map { $0.coordinate }
         let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
         mapView?.addOverlay(polyline)
@@ -50,28 +50,31 @@ class RouteManager {
 
     func clearRoute() {
         routePoints.removeAll()
+        removeCurrentPolyline()
+    }
+
+    private func removeCurrentPolyline() {
         if let polyline = currentPolyline {
             mapView?.removeOverlay(polyline)
             currentPolyline = nil
         }
     }
-    
-    func loadGeoJSON(filePath: String) -> [MKOverlay]? {
+
+    func loadGeoJSON(fromFileNamed fileName: String) -> [MKPolyline] {
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: "geojson") else {
+            print("❌ GeoJSON não encontrado: \(fileName)")
+            return []
+        }
+
         do {
-            let data = try Data(contentsOf: URL(fileURLWithPath: filePath))
+            let data = try Data(contentsOf: url)
             let geoJSON = try MKGeoJSONDecoder().decode(data)
-            let overlays = geoJSON.compactMap { $0 as MKGeoJSONObject }.flatMap { geoJSONObject -> [MKOverlay] in
-                if let feature = geoJSONObject as? MKGeoJSONFeature, let geometry = feature.geometry.first {
-                    if let polyline = geometry as? MKPolyline {
-                        return [polyline]
-                    }
-                }
-                return []
-            }
-            return overlays
+            return geoJSON
+                .compactMap { $0 as? MKGeoJSONFeature }
+                .compactMap { $0.geometry.first as? MKPolyline }
         } catch {
-            print("Error loading GeoJSON: \(error)")
-            return nil
+            print("❌ Erro ao carregar GeoJSON: \(error)")
+            return []
         }
     }
 }

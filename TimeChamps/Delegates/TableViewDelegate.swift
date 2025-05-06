@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 
 class TableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
-    var routes: Routes
+    var routes: RouteRepository
     weak var navigationController: UINavigationController?
     
-    init(routes: Routes, navigationController: UINavigationController?) {
+    init(routes: RouteRepository, navigationController: UINavigationController?) {
         self.routes = routes
         self.navigationController = navigationController
     }
@@ -30,8 +30,7 @@ class TableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let route = routes.allRoutes[indexPath.row]
-        let routeDetailVC = RouteDetailViewController()
-        routeDetailVC.route = route
+        let routeDetailVC = RouteDetailViewController(route: route)
         navigationController?.pushViewController(routeDetailVC, animated: true)
     }
     

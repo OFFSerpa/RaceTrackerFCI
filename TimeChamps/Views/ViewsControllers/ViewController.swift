@@ -39,42 +39,40 @@ class ViewController: UIViewController {
         return tableView
     }()
 
-    let routes = Routes()
+    let routeRepository = RouteRepository()
     var tableViewDelegate: TableViewDelegate?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.view.backgroundColor = UIColor.dynamic(light: .coolBlue, dark: .backBlack)
+        override func viewDidLoad() {
+            super.viewDidLoad()
 
-        setElements()
-        configureTableView()
+            self.view.backgroundColor = UIColor.dynamic(light: .coolBlue, dark: .backBlack)
 
-        let routeManager = RouteManager(mapView: nil)
+            setElements()
+            configureTableView()
 
-        if let overlays = routeManager.loadGeoJSON(filePath: Bundle.main.path(forResource: "Interlagos", ofType: "geojson")!) {
-            routes.addGeoJSONRoute(name: "Interlagos", overlays: overlays)
-        }
-        if let overlays = routeManager.loadGeoJSON(filePath: Bundle.main.path(forResource: "Aldeia", ofType: "geojson")!) {
-            routes.addGeoJSONRoute(name: "Aldeia da Serra", overlays: overlays)
-        }
-        if let overlays = routeManager.loadGeoJSON(filePath: Bundle.main.path(forResource: "NelsonPiquet", ofType: "geojson")!) {
-            routes.addGeoJSONRoute(name: "Jacarepaguá", overlays: overlays)
-        }
-        if let overlays = routeManager.loadGeoJSON(filePath: Bundle.main.path(forResource: "Piracicaba", ofType: "geojson")!) {
-            routes.addGeoJSONRoute(name: "Piracicaba", overlays: overlays)
-        }
-        if let overlays = routeManager.loadGeoJSON(filePath: Bundle.main.path(forResource: "SantaCruz", ofType: "geojson")!) {
-            routes.addGeoJSONRoute(name: "Santa Cruz ", overlays: overlays)
-        }
-        if let overlays = routeManager.loadGeoJSON(filePath: Bundle.main.path(forResource: "Taruma", ofType: "geojson")!) {
-            routes.addGeoJSONRoute(name: "Tarumã ", overlays: overlays)
+            loadMockRoutesFromGeoJSON()
+
+            NotificationCenter.default.addObserver(self, selector: #selector(updateTableView), name: UIApplication.willEnterForegroundNotification, object: nil)
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTableView), name: UIApplication.willEnterForegroundNotification, object: nil)
-        
-        updateTableView()
-    }
+        func loadMockRoutesFromGeoJSON() {
+            guard let url = Bundle.main.url(forResource: "mock_routes", withExtension: "geojson"),
+                  let data = try? Data(contentsOf: url) else {
+                print("❌ Erro ao localizar ou ler o mock_routes.geojson")
+                return
+            }
+
+            do {
+                let decoder = MKGeoJSONDecoder()
+                let objects = try decoder.decode(data)
+                let features = objects.compactMap { $0 as? MKGeoJSONFeature }
+                routeRepository.addGeoJSONFeatures(features)
+                tableView.reloadData()
+                print("✅ Rotas mock carregadas: \(features.count)")
+            } catch {
+                print("❌ Erro ao decodificar GeoJSON: \(error)")
+            }
+        }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -107,7 +105,7 @@ class ViewController: UIViewController {
     }
     
     @objc func navigate() {
-        let destination = AddViewController(routes: routes)
+        let destination = AddViewController(routes: routeRepository)
         navigationController?.pushViewController(destination, animated: true)
     }
 
@@ -125,7 +123,7 @@ class ViewController: UIViewController {
     }
 
     func configureTableView() {
-        tableViewDelegate = TableViewDelegate(routes: routes, navigationController: navigationController)
+        tableViewDelegate = TableViewDelegate(routes: routeRepository, navigationController: navigationController)
         tableView.delegate = tableViewDelegate
         tableView.dataSource = tableViewDelegate
         tableView.register(RouteTableViewCell.self, forCellReuseIdentifier: "RouteCell")

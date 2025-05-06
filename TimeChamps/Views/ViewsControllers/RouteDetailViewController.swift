@@ -6,40 +6,40 @@
 //
 
 
-import Foundation
 import UIKit
 import MapKit
 import SwiftUI
 
 class RouteDetailViewController: UIViewController {
     
+    // MARK: - Properties
+    
     let speedLabel = SpeedLabelView()
-    var route: Route?
+    var route: Route
     var locationManager: CLLocationManager?
     var locationManagerDelegate: LocationManagerDelegate?
     var timer: Timer?
     var startTime: Date?
     var startCoordinate: CLLocationCoordinate2D?
+    
     var lapCount: Int = 0 {
-        didSet {
-            lapsLabel.text = "Voltas: \(lapCount)"
-        }
+        didSet { lapsLabel.text = "Voltas: \(lapCount)" }
     }
     
     var isRunning: Bool = false {
-        didSet {
-            updateButtonTitle()
-        }
+        didSet { updateButtonState() }
     }
+
+    // MARK: - UI Elements
     
-    let titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let distanceLabel: UILabel = {
+    lazy var distanceLabel: UILabel = {
         let label = UILabel()
         label.textColor = .tertiaryLabel
         label.font = UIFont.systemFont(ofSize: 18)
@@ -47,15 +47,7 @@ class RouteDetailViewController: UIViewController {
         return label
     }()
     
-    let bestTimeLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .secondaryLabel
-        label.font = UIFont.systemFont(ofSize: 18)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    let timeLabel: UILabel = {
+    lazy var timeLabel: UILabel = {
         let label = UILabel()
         label.text = "0:00"
         label.font = UIFont.italicSystemFont(ofSize: 40, weight: .bold)
@@ -63,7 +55,7 @@ class RouteDetailViewController: UIViewController {
         return label
     }()
     
-    let lapsLabel: UILabel = {
+    lazy var lapsLabel: UILabel = {
         let label = UILabel()
         label.text = "Voltas: 0"
         label.font = UIFont.systemFont(ofSize: 18)
@@ -71,37 +63,50 @@ class RouteDetailViewController: UIViewController {
         return label
     }()
     
-    let mapViewComponent: MapViewComponent = {
+    lazy var mapViewComponent: MapViewComponent = {
         let mapView = MapViewComponent()
         mapView.translatesAutoresizingMaskIntoConstraints = false
         return mapView
     }()
     
-    let startRaceButton: UIButton = {
+    lazy var startRaceButton: UIButton = {
         let button = UIButton()
         button.setTitle("Ir!", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.backgroundColor = UIColor.systemGreen
         button.layer.cornerRadius = 40
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(startRace), for: .touchUpInside)
+        button.addTarget(self, action: #selector(toggleRace), for: .touchUpInside)
         return button
     }()
+
+    // MARK: - Init
     
+    init(route: Route) {
+        self.route = route
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.secondarySystemBackground
         setupUI()
-        setupRouteDetails()
+        populateRouteDetails()
         configureLocationManager()
     }
-    
+
+    // MARK: - Setup
+
     private func setupUI() {
-        [titleLabel, distanceLabel, timeLabel, lapsLabel, mapViewComponent, startRaceButton].forEach {
+        [titleLabel, distanceLabel, timeLabel, lapsLabel, mapViewComponent, startRaceButton, speedLabel].forEach {
             view.addSubview($0)
         }
-        
-        view.addSubview(speedLabel)
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -132,122 +137,110 @@ class RouteDetailViewController: UIViewController {
             startRaceButton.heightAnchor.constraint(equalToConstant: 80)
         ])
     }
-    
-    private func setupRouteDetails() {
-        guard let route = route else { return }
-        
+
+    private func populateRouteDetails() {
         titleLabel.text = route.name
-        distanceLabel.text = "Distância: \(formatDistance(route.distance)) km"
-        bestTimeLabel.text = "Melhor Tempo: \(route.bestTime)"
+        distanceLabel.text = "Distância: \(String(format: "%.2f", route.distance)) km"
         
         mapViewComponent.routePoints = route.points
         adjustMapZoom()
     }
-    
-    private func formatDistance(_ distance: Double) -> String {
-        let formatter = NumberFormatter()
-        formatter.maximumFractionDigits = 2
-        formatter.minimumFractionDigits = 2
-        formatter.numberStyle = .decimal
-        return formatter.string(from: NSNumber(value: distance)) ?? "\(distance)"
-    }
-    
+
     private func adjustMapZoom() {
-        guard let coordinates = route?.points.map({ $0.coordinate }) else { return }
+        let coordinates = route.points.map { $0.coordinate }
         let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
         mapViewComponent.mapView.addOverlay(polyline)
-        
+
         var regionRect = polyline.boundingMapRect
         let wPadding = regionRect.size.width * 0.25
         let hPadding = regionRect.size.height * 0.25
-        
         regionRect.size.width += wPadding
         regionRect.size.height += hPadding
         regionRect.origin.x -= wPadding / 2
         regionRect.origin.y -= hPadding / 2
-        
+
         mapViewComponent.mapView.setVisibleMapRect(regionRect, animated: true)
     }
-    
+
     private func configureLocationManager() {
         locationManager = CLLocationManager()
-        locationManagerDelegate = LocationManagerDelegate(mapView: mapViewComponent.mapView, viewController: self,speedLabel: speedLabel, routeManager: RouteManager(mapView: mapViewComponent.mapView))
-        locationManagerDelegate?.onFinish = { [weak self] in
-            self?.completeLap()
-        }
+        let routeMgr = RouteManager(mapView: mapViewComponent.mapView)
+        locationManagerDelegate = LocationManagerDelegate(
+            mapView: mapViewComponent.mapView,
+            viewController: self,
+            speedLabel: speedLabel,
+            routeManager: routeMgr
+        )
+        locationManagerDelegate?.onFinish = { [weak self] in self?.completeLap() }
         locationManagerDelegate?.configureLocationManager(locationManager!)
         locationManager?.delegate = locationManagerDelegate
     }
-    
-    @objc private func startRace() {
-        if isRunning {
-            stopRace()
-        } else {
-            startTime = Date()
-            lapCount = 0
-            startTimer()
-            locationManagerDelegate?.isSaving = true
-            
-            guard let startCoordinate = route?.points.first?.coordinate else { return }
-            self.startCoordinate = startCoordinate
-            locationManagerDelegate?.setupFinishLineRegion(coordinate: startCoordinate)
-            
-            isRunning = true
+
+    // MARK: - Race Methods
+
+    @objc private func toggleRace() {
+        isRunning ? stopRace() : beginRace()
+    }
+
+    private func beginRace() {
+        startTime = Date()
+        lapCount = 0
+        startTimer()
+        locationManagerDelegate?.isSaving = true
+
+        if let startCoord = route.points.first?.coordinate {
+            self.startCoordinate = startCoord
+            locationManagerDelegate?.setupFinishLineRegion(coordinate: startCoord)
         }
+
+        isRunning = true
     }
-    
-    private func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
-    }
-    
-    @objc private func updateTimeLabel() {
-        guard let startTime = startTime else { return }
-        let elapsedTime = Date().timeIntervalSince(startTime)
-        let minutes = Int(elapsedTime) / 60
-        let seconds = Int(elapsedTime) % 60
-        timeLabel.text = String(format: "%d:%02d", minutes, seconds)
-    }
-    
-    private func updateButtonTitle() {
-        let title = isRunning ? "Parar!" : "Ir!"
-        startRaceButton.setTitle(title, for: .normal)
-        
-        let color = isRunning ? UIColor.systemRed : UIColor.systemGreen
-        startRaceButton.backgroundColor = color
-    }
-    
+
     private func stopRace() {
         locationManagerDelegate?.isSaving = false
         timer?.invalidate()
         timer = nil
         isRunning = false
-        
-        let elapsedTime = Date().timeIntervalSince(startTime ?? Date())
-        let minutes = Int(elapsedTime) / 60
-        let seconds = Int(elapsedTime) % 60
-        let timeString = String(format: "%d:%02d", minutes, seconds)
-        
-        let raceSummaryVC = RaceSummaryViewController()
-        raceSummaryVC.route = route
-        raceSummaryVC.elapsedTime = elapsedTime
-        raceSummaryVC.lapCount = lapCount
-        navigationController?.pushViewController(raceSummaryVC, animated: true)
+
+        let summaryVC = RaceSummaryViewController()
+        summaryVC.route = route
+        summaryVC.elapsedTime = Date().timeIntervalSince(startTime ?? Date())
+        summaryVC.lapCount = lapCount
+        navigationController?.pushViewController(summaryVC, animated: true)
     }
-    
+
+    private func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
+    }
+
+    @objc private func updateTimeLabel() {
+        if let start = startTime {
+            timeLabel.text = Date().timeIntervalSince(start).formattedTime
+        }
+    }
+
+    private func updateButtonState() {
+        let title = isRunning ? "Parar!" : "Ir!"
+        startRaceButton.setTitle(title, for: .normal)
+        startRaceButton.backgroundColor = isRunning ? .systemRed : .systemGreen
+    }
+
     private func completeLap() {
         lapCount += 1
     }
-    
+
+    // MARK: - CoreLocation Request
+
     func checkLocationAuthorization() {
-        guard let locationManager = locationManager else { return }
-        switch locationManager.authorizationStatus {
+        guard let manager = locationManager else { return }
+        switch manager.authorizationStatus {
         case .authorizedWhenInUse, .authorizedAlways:
             mapViewComponent.mapView.showsUserLocation = true
-            locationManager.startUpdatingLocation()
+            manager.startUpdatingLocation()
+        case .notDetermined, .restricted:
+            manager.requestWhenInUseAuthorization()
         case .denied:
             break
-        case .notDetermined, .restricted:
-            locationManager.requestWhenInUseAuthorization()
         @unknown default:
             break
         }

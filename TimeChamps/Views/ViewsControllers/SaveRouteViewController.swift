@@ -13,7 +13,7 @@ import MapKit
 class SaveRouteViewController: UIViewController {
 
     
-    var routes: Routes?
+    var routeRepository: RouteRepository?
     var routePoints: [RoutePoint] = []
     var onSave: (() -> Void)?
     
@@ -141,11 +141,9 @@ class SaveRouteViewController: UIViewController {
     private func configureMap() {
         mapViewComponent.routePoints = routePoints
         
-        if let routes = routes {
-            let distance = routes.calculateDistance(points: routePoints)
-            distanceLabel.text = String(format: "%.2f km", distance)
-            timeLabel.text = "\(routes.calculateBestTime(points: routePoints))"
-        }
+        let distance = RouteUtils.calculateDistance(points: routePoints)
+        distanceLabel.text = String(format: "%.2f km", distance)
+        timeLabel.text = RouteUtils.calculateBestTime(points: routePoints)
         
         adjustMapZoom()
     }
@@ -170,7 +168,7 @@ class SaveRouteViewController: UIViewController {
     
     @objc private func saveRoute() {
         guard let name = nameTextField.text, !name.isEmpty else { return }
-        routes?.addRoute(name: name, points: routePoints)
+        routeRepository?.addRoute(name: name, points: routePoints)
         onSave?()
         dismiss(animated: true, completion: nil)
     }

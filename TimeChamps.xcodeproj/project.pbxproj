@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		649A9CF92C0E4DA0006124DF /* Aldeia.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 649A9CF82C0E4DA0006124DF /* Aldeia.geojson */; };
 		649A9CFB2C0E4DB4006124DF /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649A9CFA2C0E4DB4006124DF /* Colors.swift */; };
 		D013DBCA2BF54935007C04F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013DBC92BF54935007C04F6 /* AppDelegate.swift */; };
 		D013DBCC2BF54935007C04F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013DBCB2BF54935007C04F6 /* SceneDelegate.swift */; };
@@ -16,24 +15,26 @@
 		D013DBDE2BF557AF007C04F6 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013DBDD2BF557AF007C04F6 /* AddViewController.swift */; };
 		D079A8DD2BFD0CD2008436D5 /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8DC2BFD0CD2008436D5 /* LocationManagerDelegate.swift */; };
 		D079A8DF2BFD2F30008436D5 /* SpeedLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8DE2BFD2F30008436D5 /* SpeedLabelView.swift */; };
-		D079A8E22BFD3DCD008436D5 /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8E12BFD3DCD008436D5 /* RouteModel.swift */; };
 		D079A8E42BFD8166008436D5 /* SaveRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8E32BFD8166008436D5 /* SaveRouteViewController.swift */; };
 		D079A8E62BFD891C008436D5 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8E52BFD891C008436D5 /* RouteTableViewCell.swift */; };
 		D079A8E92BFE620B008436D5 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8E82BFE620B008436D5 /* TableViewDelegate.swift */; };
-		D079A8EB2BFE63E6008436D5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8EA2BFE63E6008436D5 /* Extensions.swift */; };
 		D079A8ED2BFE66A0008436D5 /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8EC2BFE66A0008436D5 /* RouteManager.swift */; };
 		D079A8EF2BFE6AAA008436D5 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8EE2BFE6AAA008436D5 /* RouteDetailViewController.swift */; };
 		D079A8F22BFFADDC008436D5 /* MapViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8F12BFFADDC008436D5 /* MapViewComponent.swift */; };
+		D07F15E02DC991D40068C961 /* mock_routes.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D07F15DF2DC991D40068C961 /* mock_routes.geojson */; };
+		D07F15E22DC995080068C961 /* RoutePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F15E12DC995080068C961 /* RoutePoint.swift */; };
+		D07F15E42DC995130068C961 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F15E32DC995130068C961 /* Route.swift */; };
+		D07F15E62DC9951C0068C961 /* RouteUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F15E52DC9951C0068C961 /* RouteUtils.swift */; };
+		D07F15E82DC995250068C961 /* RouteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F15E72DC995250068C961 /* RouteRepository.swift */; };
+		D07F15EB2DC996EA0068C961 /* UIFont+Trait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F15EA2DC996EA0068C961 /* UIFont+Trait.swift */; };
+		D07F15EF2DC997230068C961 /* MKPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F15EE2DC997190068C961 /* MKPolyline.swift */; };
+		D07F15F12DC9972C0068C961 /* RouteDetail+Map.swift in Resources */ = {isa = PBXBuildFile; fileRef = D07F15F02DC9972C0068C961 /* RouteDetail+Map.swift */; };
+		D07F15F32DC997510068C961 /* RaceSummary+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F15F22DC997490068C961 /* RaceSummary+Map.swift */; };
+		D07F15F72DC9985A0068C961 /* TimeInterval+Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F15F62DC9984D0068C961 /* TimeInterval+Race.swift */; };
 		D0C1C7542C018D700024ED72 /* RaceSummaryViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1C7532C018D700024ED72 /* RaceSummaryViewController .swift */; };
-		D0C1C7D52C04FDBC0024ED72 /* Interlagos.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0C1C7D32C04FDBB0024ED72 /* Interlagos.geojson */; };
-		D0C1C7D72C0503040024ED72 /* NelsonPiquet.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0C1C7D62C0503040024ED72 /* NelsonPiquet.geojson */; };
-		D0C1C7D92C0504C00024ED72 /* Piracicaba.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0C1C7D82C0504C00024ED72 /* Piracicaba.geojson */; };
-		D0C1C7DD2C05067F0024ED72 /* Taruma.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0C1C7DC2C05067F0024ED72 /* Taruma.geojson */; };
-		D0C1C7E12C0511BD0024ED72 /* SantaCruz.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0C1C7E02C0511BD0024ED72 /* SantaCruz.geojson */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		649A9CF82C0E4DA0006124DF /* Aldeia.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Aldeia.geojson; sourceTree = "<group>"; };
 		649A9CFA2C0E4DB4006124DF /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D013DBC62BF54935007C04F6 /* TimeChamps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeChamps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D013DBC92BF54935007C04F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,20 +45,23 @@
 		D013DBDD2BF557AF007C04F6 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		D079A8DC2BFD0CD2008436D5 /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
 		D079A8DE2BFD2F30008436D5 /* SpeedLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLabelView.swift; sourceTree = "<group>"; };
-		D079A8E12BFD3DCD008436D5 /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
 		D079A8E32BFD8166008436D5 /* SaveRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRouteViewController.swift; sourceTree = "<group>"; };
 		D079A8E52BFD891C008436D5 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
 		D079A8E82BFE620B008436D5 /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
-		D079A8EA2BFE63E6008436D5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D079A8EC2BFE66A0008436D5 /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 		D079A8EE2BFE6AAA008436D5 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
 		D079A8F12BFFADDC008436D5 /* MapViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewComponent.swift; sourceTree = "<group>"; };
+		D07F15DF2DC991D40068C961 /* mock_routes.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = mock_routes.geojson; sourceTree = "<group>"; };
+		D07F15E12DC995080068C961 /* RoutePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePoint.swift; sourceTree = "<group>"; };
+		D07F15E32DC995130068C961 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		D07F15E52DC9951C0068C961 /* RouteUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteUtils.swift; sourceTree = "<group>"; };
+		D07F15E72DC995250068C961 /* RouteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRepository.swift; sourceTree = "<group>"; };
+		D07F15EA2DC996EA0068C961 /* UIFont+Trait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Trait.swift"; sourceTree = "<group>"; };
+		D07F15EE2DC997190068C961 /* MKPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKPolyline.swift; sourceTree = "<group>"; };
+		D07F15F02DC9972C0068C961 /* RouteDetail+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RouteDetail+Map.swift"; sourceTree = "<group>"; };
+		D07F15F22DC997490068C961 /* RaceSummary+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RaceSummary+Map.swift"; sourceTree = "<group>"; };
+		D07F15F62DC9984D0068C961 /* TimeInterval+Race.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Race.swift"; sourceTree = "<group>"; };
 		D0C1C7532C018D700024ED72 /* RaceSummaryViewController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RaceSummaryViewController .swift"; sourceTree = "<group>"; };
-		D0C1C7D32C04FDBB0024ED72 /* Interlagos.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Interlagos.geojson; sourceTree = "<group>"; };
-		D0C1C7D62C0503040024ED72 /* NelsonPiquet.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NelsonPiquet.geojson; sourceTree = "<group>"; };
-		D0C1C7D82C0504C00024ED72 /* Piracicaba.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Piracicaba.geojson; sourceTree = "<group>"; };
-		D0C1C7DC2C05067F0024ED72 /* Taruma.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Taruma.geojson; sourceTree = "<group>"; };
-		D0C1C7E02C0511BD0024ED72 /* SantaCruz.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SantaCruz.geojson; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +105,14 @@
 			path = TimeChamps;
 			sourceTree = "<group>";
 		};
-		D079A8E02BFD3556008436D5 /* ComponentsUiKIt */ = {
+		D079A8E02BFD3556008436D5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				D079A8DE2BFD2F30008436D5 /* SpeedLabelView.swift */,
 				D079A8E52BFD891C008436D5 /* RouteTableViewCell.swift */,
 				D079A8F12BFFADDC008436D5 /* MapViewComponent.swift */,
 			);
-			path = ComponentsUiKIt;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		D079A8E72BFE61F1008436D5 /* Delegates */ = {
@@ -137,8 +141,11 @@
 		D07F15DC2DC984600068C961 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D07F15E72DC995250068C961 /* RouteRepository.swift */,
+				D07F15E52DC9951C0068C961 /* RouteUtils.swift */,
+				D07F15E32DC995130068C961 /* Route.swift */,
+				D07F15E12DC995080068C961 /* RoutePoint.swift */,
 				D079A8EC2BFE66A0008436D5 /* RouteManager.swift */,
-				D079A8E12BFD3DCD008436D5 /* RouteModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -147,7 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				D079A8F02BFE6AB0008436D5 /* ViewsControllers */,
-				D079A8E02BFD3556008436D5 /* ComponentsUiKIt */,
+				D079A8E02BFD3556008436D5 /* Components */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -155,21 +162,28 @@
 		D07F15DE2DC984900068C961 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D079A8EA2BFE63E6008436D5 /* Extensions.swift */,
+				D07F15E92DC996E10068C961 /* Extensions */,
 				649A9CFA2C0E4DB4006124DF /* Colors.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		D07F15E92DC996E10068C961 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D07F15F62DC9984D0068C961 /* TimeInterval+Race.swift */,
+				D07F15F22DC997490068C961 /* RaceSummary+Map.swift */,
+				D07F15F02DC9972C0068C961 /* RouteDetail+Map.swift */,
+				D07F15EE2DC997190068C961 /* MKPolyline.swift */,
+				D07F15EA2DC996EA0068C961 /* UIFont+Trait.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D0C1C7CF2C04FAA40024ED72 /* geojson - mocks */ = {
 			isa = PBXGroup;
 			children = (
-				649A9CF82C0E4DA0006124DF /* Aldeia.geojson */,
-				D0C1C7D82C0504C00024ED72 /* Piracicaba.geojson */,
-				D0C1C7E02C0511BD0024ED72 /* SantaCruz.geojson */,
-				D0C1C7DC2C05067F0024ED72 /* Taruma.geojson */,
-				D0C1C7D62C0503040024ED72 /* NelsonPiquet.geojson */,
-				D0C1C7D32C04FDBB0024ED72 /* Interlagos.geojson */,
+				D07F15DF2DC991D40068C961 /* mock_routes.geojson */,
 			);
 			path = "geojson - mocks";
 			sourceTree = "<group>";
@@ -233,12 +247,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D013DBD32BF54936007C04F6 /* Assets.xcassets in Resources */,
-				649A9CF92C0E4DA0006124DF /* Aldeia.geojson in Resources */,
-				D0C1C7D52C04FDBC0024ED72 /* Interlagos.geojson in Resources */,
-				D0C1C7D92C0504C00024ED72 /* Piracicaba.geojson in Resources */,
-				D0C1C7D72C0503040024ED72 /* NelsonPiquet.geojson in Resources */,
-				D0C1C7DD2C05067F0024ED72 /* Taruma.geojson in Resources */,
-				D0C1C7E12C0511BD0024ED72 /* SantaCruz.geojson in Resources */,
+				D07F15E02DC991D40068C961 /* mock_routes.geojson in Resources */,
+				D07F15F12DC9972C0068C961 /* RouteDetail+Map.swift in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,20 +261,26 @@
 			files = (
 				D013DBCE2BF54935007C04F6 /* ViewController.swift in Sources */,
 				D013DBCA2BF54935007C04F6 /* AppDelegate.swift in Sources */,
-				D079A8EB2BFE63E6008436D5 /* Extensions.swift in Sources */,
 				D079A8EF2BFE6AAA008436D5 /* RouteDetailViewController.swift in Sources */,
 				D079A8ED2BFE66A0008436D5 /* RouteManager.swift in Sources */,
+				D07F15EB2DC996EA0068C961 /* UIFont+Trait.swift in Sources */,
 				D013DBDE2BF557AF007C04F6 /* AddViewController.swift in Sources */,
-				D079A8E22BFD3DCD008436D5 /* RouteModel.swift in Sources */,
+				D07F15E62DC9951C0068C961 /* RouteUtils.swift in Sources */,
+				D07F15E22DC995080068C961 /* RoutePoint.swift in Sources */,
 				D013DBCC2BF54935007C04F6 /* SceneDelegate.swift in Sources */,
+				D07F15E42DC995130068C961 /* Route.swift in Sources */,
 				D079A8E92BFE620B008436D5 /* TableViewDelegate.swift in Sources */,
 				649A9CFB2C0E4DB4006124DF /* Colors.swift in Sources */,
 				D079A8F22BFFADDC008436D5 /* MapViewComponent.swift in Sources */,
+				D07F15F72DC9985A0068C961 /* TimeInterval+Race.swift in Sources */,
 				D0C1C7542C018D700024ED72 /* RaceSummaryViewController .swift in Sources */,
 				D079A8E62BFD891C008436D5 /* RouteTableViewCell.swift in Sources */,
 				D079A8DF2BFD2F30008436D5 /* SpeedLabelView.swift in Sources */,
+				D07F15EF2DC997230068C961 /* MKPolyline.swift in Sources */,
 				D079A8DD2BFD0CD2008436D5 /* LocationManagerDelegate.swift in Sources */,
 				D079A8E42BFD8166008436D5 /* SaveRouteViewController.swift in Sources */,
+				D07F15F32DC997510068C961 /* RaceSummary+Map.swift in Sources */,
+				D07F15E82DC995250068C961 /* RouteRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
