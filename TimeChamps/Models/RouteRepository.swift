@@ -53,4 +53,34 @@ class RouteRepository {
             addRoute(name: name, points: points)
         }
     }
+    
+    func addApiRoutes(_ pistas: [ApiPista]) {
+        for pista in pistas {
+            for feature in pista.geojson.features {
+                let coords = feature.geometry.coordinates.map {
+                    CLLocationCoordinate2D(latitude: $0[1], longitude: $0[0])
+                }
+                let polyline = MKPolyline(coordinates: coords, count: coords.count)
+
+                var points: [RoutePoint] = []
+                for i in 0..<polyline.pointCount {
+                    let coord = polyline.points()[i].coordinate
+                    points.append(RoutePoint(coordinate: coord, timestamp: Date()))
+                }
+
+                addRoute(name: pista.nome, points: points)
+            }
+        }
+    }
+    
+    func addPolylines(_ polylines: [MKPolyline], named name: String = "Rota Desconhecida") {
+        for polyline in polylines {
+            var points: [RoutePoint] = []
+            for i in 0..<polyline.pointCount {
+                let coord = polyline.points()[i].coordinate
+                points.append(RoutePoint(coordinate: coord, timestamp: Date()))
+            }
+            addRoute(name: name, points: points)
+        }
+    }
 }

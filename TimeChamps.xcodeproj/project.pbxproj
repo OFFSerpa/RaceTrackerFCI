@@ -21,7 +21,6 @@
 		D079A8ED2BFE66A0008436D5 /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8EC2BFE66A0008436D5 /* RouteManager.swift */; };
 		D079A8EF2BFE6AAA008436D5 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8EE2BFE6AAA008436D5 /* RouteDetailViewController.swift */; };
 		D079A8F22BFFADDC008436D5 /* MapViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079A8F12BFFADDC008436D5 /* MapViewComponent.swift */; };
-		D07F15E02DC991D40068C961 /* mock_routes.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D07F15DF2DC991D40068C961 /* mock_routes.geojson */; };
 		D07F15E22DC995080068C961 /* RoutePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F15E12DC995080068C961 /* RoutePoint.swift */; };
 		D07F15E42DC995130068C961 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F15E32DC995130068C961 /* Route.swift */; };
 		D07F15E62DC9951C0068C961 /* RouteUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F15E52DC9951C0068C961 /* RouteUtils.swift */; };
@@ -31,6 +30,7 @@
 		D07F15F12DC9972C0068C961 /* RouteDetail+Map.swift in Resources */ = {isa = PBXBuildFile; fileRef = D07F15F02DC9972C0068C961 /* RouteDetail+Map.swift */; };
 		D07F15F32DC997510068C961 /* RaceSummary+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F15F22DC997490068C961 /* RaceSummary+Map.swift */; };
 		D07F15F72DC9985A0068C961 /* TimeInterval+Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F15F62DC9984D0068C961 /* TimeInterval+Race.swift */; };
+		D07F16132DCEE4F90068C961 /* ApiPista.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F16122DCEE4F40068C961 /* ApiPista.swift */; };
 		D0C1C7542C018D700024ED72 /* RaceSummaryViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1C7532C018D700024ED72 /* RaceSummaryViewController .swift */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +51,6 @@
 		D079A8EC2BFE66A0008436D5 /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 		D079A8EE2BFE6AAA008436D5 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
 		D079A8F12BFFADDC008436D5 /* MapViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewComponent.swift; sourceTree = "<group>"; };
-		D07F15DF2DC991D40068C961 /* mock_routes.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = mock_routes.geojson; sourceTree = "<group>"; };
 		D07F15E12DC995080068C961 /* RoutePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePoint.swift; sourceTree = "<group>"; };
 		D07F15E32DC995130068C961 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		D07F15E52DC9951C0068C961 /* RouteUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteUtils.swift; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		D07F15F02DC9972C0068C961 /* RouteDetail+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RouteDetail+Map.swift"; sourceTree = "<group>"; };
 		D07F15F22DC997490068C961 /* RaceSummary+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RaceSummary+Map.swift"; sourceTree = "<group>"; };
 		D07F15F62DC9984D0068C961 /* TimeInterval+Race.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Race.swift"; sourceTree = "<group>"; };
+		D07F16122DCEE4F40068C961 /* ApiPista.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPista.swift; sourceTree = "<group>"; };
 		D0C1C7532C018D700024ED72 /* RaceSummaryViewController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RaceSummaryViewController .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,7 +78,6 @@
 		D013DBBD2BF54934007C04F6 = {
 			isa = PBXGroup;
 			children = (
-				D0C1C7CF2C04FAA40024ED72 /* geojson - mocks */,
 				D013DBC82BF54935007C04F6 /* TimeChamps */,
 				D013DBC72BF54935007C04F6 /* Products */,
 			);
@@ -141,6 +140,7 @@
 		D07F15DC2DC984600068C961 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D07F16122DCEE4F40068C961 /* ApiPista.swift */,
 				D07F15E72DC995250068C961 /* RouteRepository.swift */,
 				D07F15E52DC9951C0068C961 /* RouteUtils.swift */,
 				D07F15E32DC995130068C961 /* Route.swift */,
@@ -178,14 +178,6 @@
 				D07F15EA2DC996EA0068C961 /* UIFont+Trait.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		D0C1C7CF2C04FAA40024ED72 /* geojson - mocks */ = {
-			isa = PBXGroup;
-			children = (
-				D07F15DF2DC991D40068C961 /* mock_routes.geojson */,
-			);
-			path = "geojson - mocks";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,7 +239,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D013DBD32BF54936007C04F6 /* Assets.xcassets in Resources */,
-				D07F15E02DC991D40068C961 /* mock_routes.geojson in Resources */,
 				D07F15F12DC9972C0068C961 /* RouteDetail+Map.swift in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D013DBCE2BF54935007C04F6 /* ViewController.swift in Sources */,
+				D07F16132DCEE4F90068C961 /* ApiPista.swift in Sources */,
 				D013DBCA2BF54935007C04F6 /* AppDelegate.swift in Sources */,
 				D079A8EF2BFE6AAA008436D5 /* RouteDetailViewController.swift in Sources */,
 				D079A8ED2BFE66A0008436D5 /* RouteManager.swift in Sources */,

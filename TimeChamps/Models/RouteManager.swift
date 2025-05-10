@@ -6,6 +6,7 @@
 ////
 //
 
+import Foundation
 import MapKit
 
 class RouteManager {
@@ -60,21 +61,67 @@ class RouteManager {
         }
     }
 
-    func loadGeoJSON(fromFileNamed fileName: String) -> [MKPolyline] {
-        guard let url = Bundle.main.url(forResource: fileName, withExtension: "geojson") else {
-            print("❌ GeoJSON não encontrado: \(fileName)")
-            return []
+    func fetchRoutesFromAPI(urlString: String) {
+        guard let url = URL(string: urlString) else {
+            print("URL inválida")
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("Erro na requisição: \(error)")
+                return
+            }
+
+            guard let data = data else {
+                print("Sem dados na resposta")
+                return
+            }
+
+            let polylines = self.parsePolylines(from: data)
+            DispatchQueue.main.async {
+                polylines.forEach { self.mapView?.addOverlay($0) }
+            }
+        }
+
+        task.resume()
+    }
+
+    private func parsePolylines(from data: Data) -> [MKPolyline] {
+        var polylines: [MKPolyline] = []
+
+        struct ApiResponse: Decodable {
+            struct GeoJSON: Decodable {
+                struct Feature: Decodable {
+                    struct Geometry: Decodable {
+                        let coordinates: [[Double]]
+                    }
+                    let geometry: Geometry
+                }
+                let features: [Feature]
+            }
+            struct Pista: Decodable {
+                let nome: String
+                let geojson: GeoJSON
+            }
+            let pistas: [Pista]
         }
 
         do {
-            let data = try Data(contentsOf: url)
-            let geoJSON = try MKGeoJSONDecoder().decode(data)
-            return geoJSON
-                .compactMap { $0 as? MKGeoJSONFeature }
-                .compactMap { $0.geometry.first as? MKPolyline }
+            let decoded = try JSONDecoder().decode(ApiResponse.self, from: data)
+            for pista in decoded.pistas {
+                for feature in pista.geojson.features {
+                    let coords = feature.geometry.coordinates.map {
+                        CLLocationCoordinate2D(latitude: $0[1], longitude: $0[0])
+                    }
+                    let polyline = MKPolyline(coordinates: coords, count: coords.count)
+                    polylines.append(polyline)
+                }
+            }
         } catch {
-            print("❌ Erro ao carregar GeoJSON: \(error)")
-            return []
+            print("Erro ao decodificar JSON da API: \(error)")
         }
+
+        return polylines
     }
 }
